@@ -42,7 +42,7 @@ void FirstLab() {
   
   // (7) Ask the user if they have programmed before. Make sure you inform them
   //     that you want the answer as a single character (y/n)
-  cout << "Have you ever programmed before?  Please enter \"Y\" for yes or \"N\" for no. << endl;
+  cout << "Have you ever programmed before?  Please enter \"Y\" for yes or \"N\" for no." << endl;
 
   // (8): Read in the answer from standard input and store in the variable
   //      programmed_before
