@@ -49,8 +49,11 @@ void FirstLab() {
   cin >> programmed_before;
 
   // (9): Call the function checkExperience appropriately so that the message will display
-  checkExperience(hasExperience);
-
+  if ((hasExperience == "Y") || (hasExperience == "y")) {
+    checkExperience('y');
+  } else {
+    checkExperience('n');
+  }
 }
 
 /*
@@ -64,7 +67,7 @@ void FirstLab() {
 string checkExperience (char hasExperience) 
 {
     //CODE HERE
-    if ((programmed_before == "Y") || (programmed_before == "y")) {
+    if (hasExperience == "y") {
       return string("Welcome back");
     } else {
       return string("Get ready to have some fun");
