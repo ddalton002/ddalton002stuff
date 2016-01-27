@@ -13,6 +13,27 @@ using std::cin;
 using std::endl;
 using std::string;
 
+
+
+/*
+ * Create a string message based upon whether or not a user has 
+ * programming experience.
+ * @param hasExperience a char ('y'es or 'n'o) representing whether
+ *        or not a user has programming experience
+ * @return "Welcome back" when hasExperience is 'y', else "Get ready to
+ *         have some fun"
+ */
+string checkExperience (char hasExperience) 
+{
+    //CODE HERE
+    if (hasExperience == 'y' || hasExperience == 'Y') {
+      return string("Welcome back");
+    } else {
+      return string("Get ready to have some fun");
+    }
+    
+}
+
 /*
  * Create a program based on the comments below
  * @param none
@@ -49,30 +70,11 @@ void FirstLab() {
   cin >> programmed_before;
 
   // (9): Call the function checkExperience appropriately so that the message will display
-  if ((hasExperience == "Y") || (hasExperience == "y")) {
-    checkExperience('y');
-  } else {
-    checkExperience('n');
-  }
-}
-
-/*
- * Create a string message based upon whether or not a user has 
- * programming experience.
- * @param hasExperience a char ('y'es or 'n'o) representing whether
- *        or not a user has programming experience
- * @return "Welcome back" when hasExperience is 'y', else "Get ready to
- *         have some fun"
- */
-string checkExperience (char hasExperience) 
-{
-    //CODE HERE
-    if (hasExperience == "y") {
-      return string("Welcome back");
-    } else {
-      return string("Get ready to have some fun");
-    }
-    
+  //if ((programmed_before == 'Y') || (programmed_before == 'y')) {
+    checkExperience(programmed_before);
+  //} else {
+  //  checkExperience('n');
+  //}
 }
 
 int main()
