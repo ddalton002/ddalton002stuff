@@ -27,6 +27,28 @@
 void MakeChange(int initial_value, int &quarters, int &dimes, int &nickels,
                 int &pennies) {
   // CODE HERE
+  /*
+  quartersRemainder = initial_value % 25
+  &quarters = (initial_value - quartersRemainder) / 25
+  dimesRemainder = quartersRemainder % 10
+  &dimes = (quartersRemainder - dimesRemainder) / 10
+  nickelsRemainder = dimesRemainder % 5
+  &nickles = (dimesRemainder - nickelsRemainder) / 5
+  penniesRemainder = nickelsRemainder % 1
+  &pennies = (nickelsRemainder - penniesRemainder) / 1
+  */
+  int quartersRemainder = 0;
+  int dimesRemainder = 0;
+  int nickelsRemainder = 0;
+  int penniesRemainder = 0;
+  quartersRemainder = initial_value % 25;
+  quarters = (initial_value - quartersRemainder) / 25;
+  dimesRemainder = quartersRemainder % 10;
+  dimes = (quartersRemainder - dimesRemainder) / 10;
+  nickelsRemainder = dimesRemainder % 5;
+  nickels = (dimesRemainder - nickelsRemainder) / 5;
+  penniesRemainder = nickelsRemainder % 1;
+  pennies = (nickelsRemainder - penniesRemainder) / 1;
 }
 
 /*
@@ -40,7 +62,7 @@ void MakeChange(int initial_value, int &quarters, int &dimes, int &nickels,
  * @return double  - Represents the horizontal distance the human cannonball
  *                   will travel
  */
-double LaunchHumanCannonball(double initial_velocity, double launch_angle) {
+//double LaunchHumanCannonball(double initial_velocity, double launch_angle) {
   // (1) Convert launch_angle from degrees to radians
   //     [radian_angle = launch_angle * (kPI/180)]
   // CODE HERE
@@ -63,4 +85,4 @@ double LaunchHumanCannonball(double initial_velocity, double launch_angle) {
 
   // (6) Return horizontal/x distance
   // CODE HERE
-}
+//}
