@@ -1,6 +1,6 @@
 /*
  * Name        : lab_2.cpp
- * Author      : FILL IN
+ * Author      : David Dalton
  * Description : Using Arithmetic to finish the functions MakeChange() and
  *               LaunchHumanCannonball()
  * Sources     :
@@ -38,6 +38,8 @@ void MakeChange(int initial_value, int &quarters, int &dimes, int &nickels,
   nickels = (dimesRemainder - nickelsRemainder) / 5;
   penniesRemainder = nickelsRemainder % 1;
   pennies = (nickelsRemainder - penniesRemainder) / 1;
+  cout << "You gave " << initial_value << " to me." << endl;
+  cout << "You get " << quarters << " quarters, " << dimes << " dimes, " << nickels << " nickels, and " << pennies << " pennies in change" << endl;
 }
 
 /*
@@ -74,14 +76,34 @@ double LaunchHumanCannonball(double initial_velocity, double launch_angle) {
 
   // (6) Return horizontal/x distance
   return x_distance;
+
+
+  
   
 }
 
+/*
+Main for testing purposes only!!!
 int main()
 {
+  int initial_value = 0;
+  int quarters = 0;
+  int dimes = 0;
+  int nickels = 0;
+  int pennies = 0;
+  cout << "Enter an initial value" << endl;
+  cin >> initial_value;
+  MakeChange(initial_value, quarters, dimes, nickels, pennies);
   
-  //MakeChange(199, 0, 0, 0, 0);
+  double initial_velocity = 0;
+  double launch_angle = 0;
+  cout << "Enter initial velocity" << endl;
+  cin >> initial_velocity;
+  cout << "Enter launch angle" << endl;
+  cin >> launch_angle;
+  cout << "You traveled " << LaunchHumanCannonball(initial_velocity, launch_angle) << endl;
+
   
-  LaunchHumanCannonball(100, 45);
   return 0;
 }
+*/
