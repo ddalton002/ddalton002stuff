@@ -3,7 +3,7 @@
  * Author      : David Dalton
  * Description : Using Arithmetic to finish the functions MakeChange() and
  *               LaunchHumanCannonball()
- * Sources     :
+ * Sources     : 
  */
 
 // Please note the header above. You need to include the name of the file, the
@@ -38,8 +38,6 @@ void MakeChange(int initial_value, int &quarters, int &dimes, int &nickels,
   nickels = (dimesRemainder - nickelsRemainder) / 5;
   penniesRemainder = nickelsRemainder % 1;
   pennies = (nickelsRemainder - penniesRemainder) / 1;
-  cout << "You gave " << initial_value << " to me." << endl;
-  cout << "You get " << quarters << " quarters, " << dimes << " dimes, " << nickels << " nickels, and " << pennies << " pennies in change" << endl;
 }
 
 /*
@@ -83,7 +81,7 @@ double LaunchHumanCannonball(double initial_velocity, double launch_angle) {
 }
 
 /*
-Main for testing purposes only!!!
+//Main for testing purposes only!!!
 int main()
 {
   int initial_value = 0;
@@ -94,6 +92,8 @@ int main()
   cout << "Enter an initial value" << endl;
   cin >> initial_value;
   MakeChange(initial_value, quarters, dimes, nickels, pennies);
+  cout << "You gave " << initial_value << " to me." << endl;
+  cout << "You get " << quarters << " quarters, " << dimes << " dimes, " << nickels << " nickels, and " << pennies << " pennies in change" << endl;
   
   double initial_velocity = 0;
   double launch_angle = 0;
