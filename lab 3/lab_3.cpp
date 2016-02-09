@@ -88,7 +88,7 @@ string Goldilocks(string item, int number) {
   switch (number) {
     case 1:
     if (item == "porridge") {
-      storyLine = "This porridge is too hot";
+      storyLine = "This porridge is too hot";git commit -a -m 'Lab_'
     } else if (item == "chair"){
       storyLine = "This chair is too big";
     } else if (item == "bed"){
