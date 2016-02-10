@@ -25,10 +25,12 @@ string ToLower(string input) {
       currentLetter = input[i];
       if (( currentLetter > 64) && (currentLetter < 91)) {
         currentLetter = (currentLetter + 32);
+        input[i] = currentLetter;
+        
       }
   }
   //Takes result of loop and puts it into input variable, then returns input
-  input[i] = currentLetter;
+  
   return input;
 }
 
@@ -49,10 +51,10 @@ string ToUpper(string input) {
       currentLetter = input[i];
       if (( currentLetter > 96) && (currentLetter < 123)) {
         currentLetter = (currentLetter - 32);
+        input[i] = currentLetter;
       }
   }
   //Takes result of loop and puts it into input variable, then returns input
-  input[i] = currentLetter;
   return input;
 }
 
@@ -202,15 +204,13 @@ int RockScissorPaper(char player_one, char player_two) {
   
 }
 
-
-
 //Main for testing purposes only!!!
 int main() {
   string lowercase = "lowercase!H";
-  ToUpper(lowercase);
+  lowercase = ToUpper(lowercase);
   cout << lowercase << endl;
   string uppercase = "UPPERCASE!h";
-  ToLower(uppercase);
+  uppercase = ToLower(uppercase);
   cout << uppercase << endl;
   cout << Goldilocks("porridge", 1) << endl;
   cout << Goldilocks("porridge", 2) << endl;
@@ -232,8 +232,3 @@ int main() {
   cin >> player_two;
   cout << RockScissorPaper(player_one, player_two) << endl;
 }
-
-
-  
-
-
