@@ -22,13 +22,13 @@ string ToLower(string input) {
   if it is upper or lower case.  If it is upper case then it adds 32
   */
   for (i=0; i<length;i++){
-      currentLetter = input.at(i);
+      currentLetter = input[i];
       if (( currentLetter > 64) && (currentLetter < 91)) {
         currentLetter = (currentLetter + 32);
       }
   }
   //Takes result of loop and puts it into input variable, then returns input
-  input = currentLetter;
+  input[i] = currentLetter;
   return input;
 }
 
@@ -46,13 +46,13 @@ string ToUpper(string input) {
   if it is upper or lower case.  If it is lower case then it subracts 32
   */
   for (i=0; i<length;i++){
-      currentLetter = input.at(i);
+      currentLetter = input[i];
       if (( currentLetter > 96) && (currentLetter < 123)) {
         currentLetter = (currentLetter - 32);
       }
   }
   //Takes result of loop and puts it into input variable, then returns input
-  input = currentLetter;
+  input[i] = currentLetter;
   return input;
 }
 
@@ -88,11 +88,11 @@ string Goldilocks(string item, int number) {
   switch (number) {
     case 1:
     if (item == "porridge") {
-      storyLine = "This porridge is too hot";git commit -a -m 'Lab_'
+      storyLine = "This porridge is too hot";
     } else if (item == "chair"){
       storyLine = "This chair is too big";
     } else if (item == "bed"){
-      storyLine =  "This bed is to hard";
+      storyLine =  "This bed is too hard";
     }
     break;
     case 2:
