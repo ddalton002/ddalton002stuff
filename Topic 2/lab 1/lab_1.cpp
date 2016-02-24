@@ -20,21 +20,7 @@
    */
   void Spaceship::set_top_speed(double top_speed) 
   {
-      
-      //string convert_double;
-      stringstream set_precision;
-      cout.setf(std::ios::fixed|std::ios::showpoint);
-      cout.precision(2);
-      set_precision << top_speed;
-      cout.precision(2);
-      //set_precision << convert_double;
-      //set_precision << convert_double;
-      set_precision >> top_speed_;
-      
-      //stringstream.setf(std::ios::fixed|std::ios::showpoint);
-     // stringstream.precision(2);
-      //top_speed_ = top_speed;
-      cout << top_speed_ << endl;
+      top_speed_ = top_speed;
   }
 
   /*
@@ -105,19 +91,12 @@
    */
   string Spaceship::ToString() const 
   {
-   /*
-   *cout.setf(std::ios::fixed|std::ios::showpoint);
-   *cout.precision(#);
-   */
-   cout << top_speed_ << "Ship describe" << endl;
-      cout.setf(std::ios::showpoint);
-      //cout.precision(2);
       stringstream ship_description;
+      ship_description.setf(std::ios::fixed|std::ios::showpoint);
+      ship_description.precision(2);
       ship_description << name_ << "\n" << "Top Speed:     Warp "
-                    << cout.precision(2)
                     << top_speed_ << "\n" << "Fuel Source:   " 
                     << fuel_source_ << "\n" << "Crew Capacity: " 
-                    << crew_capacity_ << "\n";
-      cout << top_speed_ << "ship describe after" << endl;
+                    << crew_capacity_;
       return ship_description.str();
   }
