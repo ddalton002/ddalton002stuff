@@ -91,12 +91,18 @@
    */
   string Spaceship::ToString() const 
   {
-      stringstream ship_description;
-      ship_description.setf(std::ios::fixed|std::ios::showpoint);
-      ship_description.precision(2);
-      ship_description << name_ << "\n" << "Top Speed:     Warp "
-                    << top_speed_ << "\n" << "Fuel Source:   " 
-                    << fuel_source_ << "\n" << "Crew Capacity: " 
-                    << crew_capacity_;
-      return ship_description.str();
+    /*
+    *Uses stringstream to retrieve all of the class variables and stores them
+    *into the stream along with additional descriptive strings.  Once they are
+    *all combined in the stringstream it then retrieves the combined string and
+    *returns it.
+    */
+    stringstream ship_description;
+    ship_description.setf(std::ios::fixed|std::ios::showpoint);
+    ship_description.precision(2);
+    ship_description << name_ << "\n" << "Top Speed:     Warp "
+                  << top_speed_ << "\n" << "Fuel Source:   " 
+                  << fuel_source_ << "\n" << "Crew Capacity: " 
+                  << crew_capacity_;
+    return ship_description.str();
   }
