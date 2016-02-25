@@ -26,12 +26,23 @@
 bool ProcessFile(string filename) 
 {
     string current_line;
+    //Opens the file in the file stream
     ifstream fin (filename.c_str());
+    /*
+    *Uses the if statement to verify the filename and returns false if the 
+    *filename is invalid
+    */
     if(fin.fail()) 
     {
         return false;
     } else 
     {
+        /*
+        *Uses a do/while loop to check every line in the file.  It stores the
+        *current line in a string then compares the value of the string to
+        *set values to determine which counter function to call.  When the 
+        *end of the file is reached it returns true.
+        */
         do {
                 fin >> current_line;
                 if(current_line == "10")
@@ -56,6 +67,7 @@ bool ProcessFile(string filename)
             } while(!fin.eof());
         return true;
     }
+    //Closes the file
     fin.close();
 }
 
@@ -76,6 +88,11 @@ bool ProcessFile(string filename)
 void ProcessArguments(int argc, char* argv[]) 
 {
     int i;
+    /*
+    *Loops through the argument array and stores the value of the current
+    *array location into a string, then compares the string to preset
+    *values to determine which counter function to call.
+    */
     for(i=1;i<argc;i++)
     {
         string current_argument = argv[i];

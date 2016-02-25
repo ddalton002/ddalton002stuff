@@ -1,4 +1,4 @@
-/*
+no/*
  * Name        : lab_3.cpp
  * Author      : David Dalton
  * Description : Using branching statements, looping statements and string and
