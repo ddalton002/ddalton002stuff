@@ -8,7 +8,7 @@
 #define LAB_H
 
 
-#include <string>
+#include <string
 #include <sstream>
 #include <iomanip>
 #include <stdio.h>
