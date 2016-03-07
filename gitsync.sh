@@ -1,3 +1,3 @@
 #!/bin/bash
-git commit -a -m $1
+git commit -a -m asdfsad
 git push
