@@ -19,7 +19,9 @@ Accessors and Mutators for the 2 private varaibles
 string ToString()
 --returns a string containing name_ and value_
 Format -- name_, $value_
+*/
 
+/*
 DERIVED Class Name: FoodItem (base Item)
 Filenames: food_item.h/food_item.cpp
 Private Members:
@@ -50,7 +52,9 @@ units_ formatted to exactly two decimal places
 Format -- name_, $value_, units_ unit_of_measure_, calories_
 calories
 EXAMPLE -- cookie, $1, 2.50 cookie(s), 250 calories
+*/
 
+/*
 DERIVED Class Name: MagicItem (base Item)
 Filenames: magic_item.h/magic_item.cpp
 Private Members:
