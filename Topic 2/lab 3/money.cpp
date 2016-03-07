@@ -1,7 +1,7 @@
 /*
  * Name        : money.cpp
  * Author      : David Dalton
- * Description : 
+ * Description : Program that retrieves and manipulates values from an object
  */
  
 #include "money.h"
@@ -146,6 +146,14 @@ const Money operator -(const Money &amount)
 ostream& operator <<(ostream &out, const Money &amount)
 {
   int absolute_cents = abs(amount.cents_);
+  /*
+  *Gets the absolute value of the objects cents value and stores it into a 
+  *variable.  It then gets the value of the objects dollars_ and cents_
+  *variables and checks to see if they are equal to and less than 0.  If
+  *they are then they send them to an output stream with a negative character
+  *otherwise it sends it to the output stream without the negative character
+  *then returns the output stream
+  */
   if ((amount.dollars_ == 0) && (amount.cents_ < 0))
   {
     out << "$-" << setw(1) << setfill('0') << amount.dollars_ << '.' 
