@@ -1,3 +1,3 @@
 #!/bin/bash
-git commit -a -m asdfsad
+git commit -a -m tesl;tjskl;
 git push
