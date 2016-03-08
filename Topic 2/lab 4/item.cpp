@@ -1,22 +1,70 @@
 /*
-BASE Class Name: Item
-Filenames: item.h/item.cpp
-Private Members:
-string name_
---holds the name of the item
-unsigned int value_
---holds the value of the item
-Public Members:
-Constructor
---two parameters, one for each private member variable
---defaults name_ to "item"
---defaults value_ to 0
-Destructor
---does nothing
---must be virtual (add virtual keyword before the destructor)
-Accessors and Mutators for the 2 private varaibles
---use the naming scheme we have been using all semester
-string ToString()
---returns a string containing name_ and value_
-Format -- name_, $value_
-*/
+ * Name        : item.h
+ * Author      : David Dalton
+ * Description : Class Header File
+ */
+
+#include "item.h"
+
+/*
+ * Constructor
+ *takes two parameters, one for each private member variable
+ *defaults name_ to "item"
+ *defaults value_ to 0
+ */
+Item::Item(string name, unsigned int value) 
+{
+    
+    name_ = name;
+    value_ = value;
+}
+/*
+ *Destructor
+ */
+Item::~Item() 
+{
+    
+}
+/*
+ * Mutator #1
+ *sets the value of name_ to be equal to the input string
+ */
+void Item::set_name(string name) 
+{
+    name_ = name;
+}
+/*
+ * Mutator #2
+ *sets the value of value_ to be equal to the input int
+ */
+void Item::set_value(unsigned int value) 
+{
+    value_ = value;
+}
+/*
+ * Accessor #1
+ *retrieves the value of name_
+ */ 
+string Item::name() 
+{
+    return name_;
+}
+/*
+ * Accessor #2
+ *retrieves the value of value_
+ */
+unsigned int Item::value() 
+{
+    return value_;
+}
+/*
+ *string ToString()
+ *returns a string containing name_ and value_
+ *Format -- name_, $value_
+ */
+string Item::ToString() 
+{
+    stringstream returned_string;
+    returned_string << name_ << ", $" << value_;
+    return returned_string.str();
+}
