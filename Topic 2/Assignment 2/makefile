@@ -1,15 +1,31 @@
 #creates the executable from both of the object files
-assignment1test: assignment_2_unit_test.o assignment_2.o
-	g++ -Wall -g -o assignment2test assignment_2.o assignment_2_unit_test.o
+atmtest: atm_test.o bank_account.o checking_account.o savings_account.o credit_account.o
+	g++ -Wall -g -o atmtest atm_test.o bank_account.o checking_account.o savings_account.o credit_account.o
 
-#creates the assignment_1.o object file	
-assignment2: assignment_2.cpp assignment_2.h
-	g++ -Wall -g -c assignment_2cpp
+#creates the bank_account object file	
+bank_account.o: bank_account.cpp bank_account.h
+	g++ -Wall -g -c bank_account.cpp
+
+#creates the checking_account object file
+checking_account.o: checking_account.cpp checking_account.h
+	g++ -Wall -g -c checking_account.cpp
+	
+#creates the savings_account object file
+savings_account.o: savings_account.cpp savings_account.h
+	g++ -Wall -g -c savings_account.cpp
+
+#creates the credit_account object file
+credit_account.o: credit_account.cpp credit_account.h
+	g++ -Wall -g -c credit_account.cpp
+
+#creates the CinReader object file
+CinReader.o: CinReader.cpp CinReader.h
+	g++ -Wall -g -c CinReader.cpp
 
 #creates the unit test object file
-assignment_2_unit_test: assignment_2_unit_test.cpp
-	g++ -Wall -g -c assignment_2_unit_test.cpp
+atm_test.o: atm_test.cpp CinReader.o 
+	g++ -Wall -g -c atm_test.cpp CinReader.o
 	
 #cleans up old .o files	
 clean:
-	rm *.o assignment2test 
+	rm *.o *test 
