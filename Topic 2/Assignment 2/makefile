@@ -1,6 +1,6 @@
 #creates the executable from both of the object files
-atmtest: atm_test.o bank_account.o checking_account.o savings_account.o credit_account.o
-	g++ -Wall -g -o atmtest atm_test.o bank_account.o checking_account.o savings_account.o credit_account.o
+atmtest:  bank_account.o checking_account.o savings_account.o credit_account.o
+	g++ -Wall -g -o atmtest bank_account.o checking_account.o savings_account.o credit_account.o
 
 #creates the bank_account object file	
 bank_account.o: bank_account.cpp bank_account.h
@@ -23,8 +23,8 @@ CinReader.o: CinReader.cpp CinReader.h
 	g++ -Wall -g -c CinReader.cpp
 
 #creates the unit test object file
-atm_test.o: atm_test.cpp CinReader.o 
-	g++ -Wall -g -c atm_test.cpp CinReader.o
+#atm_test.o: atm_test.cpp CinReader.o - atm_test.o
+#	g++ -Wall -g -c atm_test.cpp CinReader.o - atm_test.o 
 	
 #cleans up old .o files	
 clean:

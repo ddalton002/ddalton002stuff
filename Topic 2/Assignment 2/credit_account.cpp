@@ -16,7 +16,18 @@ CreditAccount::CreditAccount(string account_name, long dollars,
                     string interest_accumulated_month, 
                     string interest_accumulated_year) 
 {
-    
+    BankAccount::SetAccountName(account_name);
+    BankAccount::SetDollars(dollars);
+    BankAccount::SetCents(cents) ;
+    BankAccount::SetLastTransaction(0, 0, last_transaction);
+    BankAccount::ClearRecentTransactions();
+    max_balance_dollars_ = max_balance_dollars;
+    max_balance_cents_ = max_balance_cents;
+    interest_rate_ = interest_rate;
+    interest_accumulated_dollars_ = interest_accumulated_dollars;
+    interest_accumulated_cents_ = interest_accumulated_cents;
+    interest_accumulated_month_= interest_accumulated_month;
+    interest_accumulated_year_ = interest_accumulated_year;
 }
 CreditAccount::~CreditAccount() 
 {
