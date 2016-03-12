@@ -46,7 +46,7 @@ class BankAccount
      long GetDollars();
      int GetCents();
      string GetLastTransaction();
-     string GetRecentTransactions();
+     string GetRecentTransactions(int transaction_id = 0);
      string ShowBalance();
     
     private:

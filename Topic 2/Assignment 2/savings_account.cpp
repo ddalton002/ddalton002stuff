@@ -8,9 +8,7 @@
 #include "savings_account.h"
 
 SavingAccount::SavingAccount(string account_name, long dollars, 
-                    int cents, string last_transaction, double interest_rate, 
-                    long interest_accumulated_dollars, 
-                    int interest_accumulated_cents, 
+                    int cents, double interest_rate, string last_transaction, 
                     string interest_accumulated_month, 
                     string interest_accumulated_year) 
 {
@@ -19,11 +17,7 @@ SavingAccount::SavingAccount(string account_name, long dollars,
     BankAccount::SetCents(cents) ;
     BankAccount::SetLastTransaction(0, 0, last_transaction);
     BankAccount::ClearRecentTransactions();
-    interest_rate_ = interest_rate;
-    interest_accumulated_dollars_ = interest_accumulated_dollars;
-    interest_accumulated_cents_ = interest_accumulated_cents;
-    interest_accumulated_month_= interest_accumulated_month;
-    interest_accumulated_year_ = interest_accumulated_year;
+    SetInterestRate(interest_rate);
 }
 SavingAccount::~SavingAccount() 
 {
@@ -40,24 +34,6 @@ void SavingAccount::SetInterestRate(double interest_rate)
         interest_rate_ = interest_rate;
     }
 }
-
-void SavingAccount::SetInterestAccumulatedDollars(long accumulated_dollars) 
-{
-    interest_accumulated_dollars_ = accumulated_dollars;
-}
-void SavingAccount::SetInterestAccumulatedCents(int accumulated_cents) 
-{
-    interest_accumulated_cents_ = accumulated_cents;
-}
-void SavingAccount::SetDollarsAccumulatedMonthly(long accumulated_dollars) 
-{
-    dollars_accumulated_monthly_ = accumulated_dollars;
-}
-void SavingAccount::SetCentsAccumulatedMonthly(int accumulated_cents) 
-{
-    cents_accumulated_monthly_ = accumulated_cents;
-}
-
 void SavingAccount::SetInterestAccumulatedMonth(long accumulated_dollars, 
                                         int accumulated_cents) 
 {
@@ -71,7 +47,7 @@ void SavingAccount::SetInterestAccumulatedMonth(long accumulated_dollars,
         } 
     }
     //string interest_string = interest.str();
-    double current_interest = atof(interest.str());
+    double current_interest = stoi(interest.str());
     long current_dollars = current_interest;
     int current_cents = ((current_interest - current_dollars) *100);
     accumulated_dollars = accumulated_dollars + current_dollars;
@@ -92,7 +68,7 @@ void SavingAccount::SetInterestAccumulatedYear(long accumulated_dollars,
           interest << interest_accumulated_year_[i];  
         } 
     }
-    double current_interest = atof(interest.str());
+    double current_interest = stoi(interest.str());
     long current_dollars = current_interest;
     int current_cents = ((current_interest - current_dollars) *100);
     accumulated_dollars = accumulated_dollars + current_dollars;
@@ -118,7 +94,7 @@ void SavingAccount::CalculateInterest()
           interest_month << interest_accumulated_month_[i];  
         } 
     }
-    double monthly_interest = atof(interest_month.str());
+    double monthly_interest = stoi(interest_month.str());
     long monthly_dollars = monthly_interest;
     int monthly_cents = ((monthly_interest - monthly_dollars) *100);
     
@@ -131,7 +107,7 @@ void SavingAccount::CalculateInterest()
           interest_year << interest_accumulated_year_[i];  
         } 
     }
-    double yearly_interest = atof(interest_year.str());
+    double yearly_interest = stoi(interest_year.str());
     long yearly_dollars = yearly_interest;
     int yearly_cents = ((yearly_interest - yearly_dollars) * 100);
     
@@ -168,24 +144,6 @@ double SavingAccount::GetInterestRate()
 {
     return interest_rate_;
 }
-
-long SavingAccount::GetInterestAccumulatedDollars() 
-{
-    return interest_accumulated_dollars_;
-}
-int SavingAccount::GetInterestAccumulatedCents() 
-{
-    return interest_accumulated_cents_;
-}
-long SavingAccount::GetDollarsAccumulatedMonthly() 
-{
-    return dollars_accumulated_monthly_;
-}
-int SavingAccount::GetCentsAccumulatedMonthly() 
-{
-    return cents_accumulated_monthly_;
-}
-
 string SavingAccount::GetInterestAccumulatedMonth() 
 {
     return interest_accumulated_month_;

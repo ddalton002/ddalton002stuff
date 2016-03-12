@@ -27,6 +27,7 @@ void BankAccount::ClearRecentTransactions()
     {
     recent_transactions_[i] = "";
     }
+    last_transaction_ = "none";
 }
 void BankAccount::SetAccountName(string account_name) 
 {
@@ -66,7 +67,6 @@ void BankAccount::SetRecentTransactions(long transaction_dollars,
     {
         recent_transactions_[i] = storage_array[i];
     }
-    
 }
 void BankAccount::DepositAccount(long dollars, int cents) 
 {
@@ -134,9 +134,9 @@ string BankAccount::GetLastTransaction()
 {
     return last_transaction_;
 }
-string BankAccount::GetRecentTransactions() 
+string BankAccount::GetRecentTransactions(int transaction_id) 
 {
-    return recent_transactions_[];
+    return recent_transactions_[transaction_id];
 }
 string BankAccount::ShowBalance() 
 {

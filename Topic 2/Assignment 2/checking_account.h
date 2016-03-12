@@ -32,16 +32,11 @@ class CheckingAccount : public BankAccount
                      string amount_kept = "$0.0", 
                      string amount_deposited = "$0.0");
      virtual ~CheckingAccount();
-     void SetAmmountCashed(long cashed_dollars = 0, int cashed_cents = 0);
-     void SetAmmountKept(long kept_dollars = 0, int kept_cents = 0);
-     void SetAmmountDeposited(long deposited_dollars = 0, 
-                              int deposited_cents = 0);
+     void SetAmountKept(long kept_dollars = 0, int kept_cents = 0);
      void WriteCheck(int check_number = 0, long check_dollars = 0, 
                         int check_cents = 0);
-     string GetAmountedCashed();
      string GetAmountedKept();
-     string GetAmountDeposited();
-     string CashCheck(long check_dollars = 0, int check_cents = 0, 
+     void CashCheck(long check_dollars = 0, int check_cents = 0, 
                         long check_dollars_deposited = 0,
                         int check_cents_deposited = 0);
     

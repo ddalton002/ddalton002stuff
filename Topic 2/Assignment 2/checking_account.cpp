@@ -17,30 +17,18 @@ CheckingAccount::CheckingAccount(string account_name ,long dollars, int cents,
     BankAccount::SetLastTransaction(0, 0, last_transaction);
     BankAccount::ClearRecentTransactions();
     amount_cashed_ = amount_cashed;
-    amount_kept_= amount_kept;
+    amount_kept_ =  amount_kept;
     amount_deposited_ = amount_deposited;
 }
 CheckingAccount::~CheckingAccount() 
 {
     
 }
-void SetAmmountCashed(long cashed_dollars, int cashed_cents) 
-{
-    stringstream cashed;
-    cashed << '$' << setw(1) << setfill('0') << cashed_dollars << "." 
-      << setfill('0') << setw(2) << cashed_cents;
-}
-void SetAmmountKept(long kept_dollars, int kept_cents) 
+void CheckingAccount::SetAmountKept(long kept_dollars, int kept_cents) 
 {
     stringstream kept;
     kept << '$' << setw(1) << setfill('0') << kept_dollars << "." 
       << setfill('0') << setw(2) << kept_cents;
-}
-void SetAmmountDeposited(long deposited_dollars, int deposited_cents) 
-{
-    stringstream deposited;
-    deposited << '$' << setw(1) << setfill('0') << deposited_dollars << "." 
-      << setfill('0') << setw(2) << deposited_cents;
 }
 void CheckingAccount::WriteCheck(int check_number, long check_dollars, 
                                     int check_cents) 
@@ -77,19 +65,11 @@ void CheckingAccount::WriteCheck(int check_number, long check_dollars,
         BankAccount::SetRecentTransactions(0,0,"CHECK ERROR: INSUFFICIENT FUNDS");
     }
 }
-string CheckingAccount::GetAmountedCashed() 
-{
-    return amount_cashed_;
-}
 string CheckingAccount::GetAmountedKept() 
 {
     return amount_kept_;
 }
-string CheckingAccount::GetAmountDeposited() 
-{
-    return amount_deposited_;
-}
-string CheckingAccount::CashCheck(long check_dollars, int check_cents, 
+void CheckingAccount::CashCheck(long check_dollars, int check_cents, 
                         long check_dollars_deposited,
                         int check_cents_deposited) 
 {
@@ -116,19 +96,15 @@ string CheckingAccount::CashCheck(long check_dollars, int check_cents,
         }
         long kept_dollars = check_dollars - check_dollars_deposited;
         int kept_cents = check_cents - check_cents_deposited;
-        SetAmmountCashed(check_dollars, check_cents);
-        SetAmmountKept(kept_dollars, kept_cents);
-        SetAmmountDeposited(check_dollars_deposited, check_cents_deposited);
+        SetAmountKept(kept_dollars, kept_cents);
         money_kept << "Cashed Check, " << GetAmountedKept() << " kept.";
         BankAccount::SetDollars(final_dollars);
         BankAccount::SetCents(final_cents);
         BankAccount::SetLastTransaction(final_dollars, final_cents, money_kept.str());
         BankAccount::SetRecentTransactions(final_dollars, final_cents, money_kept.str());
-        return GetAmountedCashed();
     } else
     {
         BankAccount::SetLastTransaction(0, 0, "CHECK CASHING ERROR");
         BankAccount::SetRecentTransactions(0, 0, "CHECK CASHING ERROR");
-        return "CHECK CASHING ERROR";
     }
 }
