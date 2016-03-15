@@ -2,11 +2,14 @@
  * Name        : savings_account.cpp
  * Author      : David Dalton
  * Description : SavingsAccount function definition
- * Source      : Luke Sathrum, lines x to y
+ * Source      : Luke Sathrum, modified portions of money lab and item lab
  */
  
 #include "savings_account.h"
 
+/*
+ * Constructor, uses default values if none given on creation
+ */
 SavingAccount::SavingAccount(string account_name, long dollars, 
                     int cents, double interest_rate, string last_transaction, 
                     string interest_accumulated_month, 
@@ -19,10 +22,17 @@ SavingAccount::SavingAccount(string account_name, long dollars,
     BankAccount::ClearRecentTransactions();
     SetInterestRate(interest_rate);
 }
+/*
+ * Destructor, unused
+ */
 SavingAccount::~SavingAccount() 
 {
     
 }
+/*
+ * Mutator
+ *
+ */
 void SavingAccount::SetInterestRate(double interest_rate) 
 {
     if(interest_rate < 0)
@@ -34,6 +44,10 @@ void SavingAccount::SetInterestRate(double interest_rate)
         interest_rate_ = interest_rate;
     }
 }
+/*
+ * Mutator
+ *
+ */
 void SavingAccount::SetInterestAccumulatedMonth(long accumulated_dollars, 
                                         int accumulated_cents) 
 {
@@ -56,6 +70,10 @@ void SavingAccount::SetInterestAccumulatedMonth(long accumulated_dollars,
       << setfill('0') << setw(2) << accumulated_cents;
     interest_accumulated_month_ = interest.str();
 }
+/*
+ * Mutator
+ *
+ */
 void SavingAccount::SetInterestAccumulatedYear(long accumulated_dollars, 
                                         int accumulated_cents) 
 {
@@ -77,6 +95,10 @@ void SavingAccount::SetInterestAccumulatedYear(long accumulated_dollars,
       << setfill('0') << setw(2) << accumulated_cents;
     interest_accumulated_year_ = interest.str();
 }
+/*
+ * Mutator
+ *
+ */
 void SavingAccount::CalculateInterest() 
 {
     long dollars = BankAccount::GetDollars();
@@ -140,14 +162,25 @@ void SavingAccount::CalculateInterest()
     SetInterestAccumulatedMonth(gained_balance_dollars, gained_balance_cents);
     
 }
+/*
+ * Accessor
+ *gets the value of interest_rate_ and returns it
+ */
 double SavingAccount::GetInterestRate() 
 {
     return interest_rate_;
 }
+/*
+ * Accessor
+ *gets the value of interest_accumulated_month_ and returns it
+ */
 string SavingAccount::GetInterestAccumulatedMonth() 
 {
     return interest_accumulated_month_;
-}
+}/*
+ * Accessor
+ *gets the value of interest_accumulated_year_ and returns it
+ */
 string SavingAccount::GetInterestAccumulatedYear() 
 {
     return interest_accumulated_year_;

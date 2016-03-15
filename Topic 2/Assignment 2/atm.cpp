@@ -29,17 +29,17 @@ int main()
         //Bank account options
         case 1:
         {
-            cout << "Set the dollar amount of your account balance" << endl;
+            BankAccount myBanking;
+            cout << "Set the dollar amount of your account balance\n" << endl;
             balance_dollars = reader.readInt(0);
             cout << "Set the cent amount of your account balance\n" << endl;
             balance_cents = reader.readInt(0,99);
-            BankAccount myBanking;
             myBanking.SetDollars(balance_dollars);
             myBanking.SetCents(balance_cents);
             cout << "Please select from the following options." << endl;
             while(!done)
             {
-                cout << "1 - Show account balance\n2 - Deposit\n3 - Withdraw\n4 - Clear Transaction history\n5 - Show recent transactions\n6 - Exit ATM\n" << endl;
+                cout << "1 - Show account balance\n2 - Deposit\n3 - Withdraw\n4 - Show recent transactions\n5 - Clear Transaction history\n6 - Exit ATM\n" << endl;
                 int choice = reader.readInt(1,6);
                 switch(choice)
                 {
@@ -71,8 +71,16 @@ int main()
                     {
                         for(int i = 0;i<10;i++)
                         {
-                            cout << myBanking.GetLastTransaction() << endl;
+                            if(myBanking.GetRecentTransactions(i) == "")
+                            {
+                                cout << "none" << endl;
+                            }else
+                            {
+                            cout << myBanking.GetRecentTransactions(i) << endl;
+                            }
                         }
+                        
+                        cout << "Your last transaction was: " << myBanking.GetLastTransaction() << endl;
                     break;
                     }
                     
@@ -94,11 +102,11 @@ int main()
         //Checking account options
         case 2:
         {
+            CheckingAccount myChecking;
             cout << "Set the dollar amount of your account balance" << endl;
             balance_dollars = reader.readInt(0);
             cout << "Set the cent amount of your account balance\n" << endl;
             balance_cents = reader.readInt(0,99);
-            CheckingAccount myChecking;
             myChecking.SetDollars(balance_dollars);
             myChecking.SetCents(balance_cents);
             cout << "Please select from the following options." << endl;
@@ -176,13 +184,13 @@ int main()
         //Savings account options
         case 3:
         {
+            SavingAccount mySavings;
             cout << "Set the dollar amount of your account balance" << endl;
             balance_dollars = reader.readInt(0);
             cout << "Set the cent amount of your account balance" << endl;
             balance_cents = reader.readInt(0,99);
             cout << "Select your interest rate\n" << endl;
             interest_rate = reader.readDouble();
-            SavingAccount mySavings;
             mySavings.SetDollars(balance_dollars);
             mySavings.SetCents(balance_cents);
             mySavings.SetInterestRate(interest_rate);
@@ -257,6 +265,7 @@ int main()
         //Credit Account options
         case 4:
         {
+            CreditAccount myCredit;
             cout << "Set the dollar amount of your account balance" << endl;
             balance_dollars = reader.readInt(0);
             cout << "Set the cent amount of your account balance" << endl;
@@ -267,7 +276,6 @@ int main()
             long max_dollars = reader.readInt(0);
             cout << "Set the cent amount for your max balance\n" << endl;
             int max_cents = reader.readInt(0, 99);
-            CreditAccount myCredit;
             myCredit.SetDollars(balance_dollars);
             myCredit.SetCents(balance_cents);
             myCredit.SetMaxBalanceDollars(max_dollars);

@@ -2,11 +2,14 @@
  * Name        : credit_account.cpp
  * Author      : David Dalton
  * Description : CreditAccount function definition
- * Source      : Luke Sathrum, lines x to y
+ * Source      : Luke Sathrum, modified portions of money lab and item lab
  */
  
 #include "credit_account.h"
 
+/*
+ * Constructor, uses default values if none given on creation
+ */
 CreditAccount::CreditAccount(string account_name, long dollars, 
                     int cents, double interest_rate,
                     long max_balance_dollars, 
@@ -26,22 +29,41 @@ CreditAccount::CreditAccount(string account_name, long dollars,
     interest_accumulated_month_ = interest_accumulated_month;
     interest_accumulated_year_ = interest_accumulated_year;;
 }
+/*
+ * Destructor, unused
+ */
 CreditAccount::~CreditAccount() 
 {
     
 }
+/*
+ * Mutator
+ *
+ */
 void CreditAccount::SetInterestRate(double interest_rate) 
 {
     interest_rate_ = interest_rate;
 }
+/*
+ * Mutator
+ *
+ */
 void CreditAccount::SetMaxBalanceDollars(long max_balance_dollars) 
 {
     max_balance_dollars_ = max_balance_dollars;
 }
+/*
+ * Mutator
+ *
+ */
 void CreditAccount::SetMaxBalanceCents(int max_balance_cents) 
 {
     max_balance_cents_ = max_balance_cents;
 }
+/*
+ * Mutator
+ *
+ */
 void CreditAccount::SetInterestAccumulatedMonth(long accumulated_dollars, 
                                         int accumulated_cents) 
 {
@@ -64,6 +86,10 @@ void CreditAccount::SetInterestAccumulatedMonth(long accumulated_dollars,
       << setfill('0') << setw(2) << accumulated_cents;
     interest_accumulated_month_ = interest.str();
 }
+/*
+ * Mutator
+ *
+ */
 void CreditAccount::SetInterestAccumulatedYear(long accumulated_dollars, 
                                         int accumulated_cents) 
 {
@@ -85,6 +111,10 @@ void CreditAccount::SetInterestAccumulatedYear(long accumulated_dollars,
       << setfill('0') << setw(2) << accumulated_cents;
     interest_accumulated_year_ = interest.str();
 }
+/*
+ * Mutator
+ *
+ */
 void CreditAccount::MakePayment(long payment_dollars, int payment_cents) 
 {
     long current_dollars = GetDollars();
@@ -119,6 +149,10 @@ void CreditAccount::MakePayment(long payment_dollars, int payment_cents)
         SetRecentTransactions(current_dollars, current_cents, "Credit Card Payment");
     }
 }
+/*
+ * Mutator
+ *
+ */
 void CreditAccount::ChargeCard(long transaction_number, long charge_dollars, 
                         int charge_cents) 
 {
@@ -155,6 +189,10 @@ void CreditAccount::ChargeCard(long transaction_number, long charge_dollars,
         BankAccount::SetRecentTransactions(0,0,"CARD ERROR: INSUFFICIENT FUNDS");
     }
 }
+/*
+ * Mutator
+ *
+ */
 void CreditAccount::CalculateInterest() 
 {
     long dollars = BankAccount::GetDollars();
@@ -217,18 +255,37 @@ void CreditAccount::CalculateInterest()
     BankAccount::SetCents(updated_balance_cents);
     SetInterestAccumulatedMonth(gained_balance_dollars, gained_balance_cents);
 }
+/*
+ * Accessor
+ *gets the value of interest and returns it
+ */
 double CreditAccount::GetInterestRate() 
 {
     return interest_rate_;
 }
+/*
+ * Accessor
+ *gets the value of max_balance_dollars_ and returns it
+ */
 long CreditAccount::GetMaxBalanceDollars() 
 {
     return max_balance_dollars_;
 }
+/*
+ * Accessor
+ *gets the value of max_balance_cents_ and returns it
+ */
 int CreditAccount::GetMaxBalanceCents() 
 {
     return max_balance_cents_;
 }
+/*
+ * Accessor
+ *calls the GetMaxBalanceDollars() and GetMaxBalanceCents() functions to get
+ *the values of their variables.  It then stores the values of those variables
+ *and sends them to a stringstream along with default characters.  It then
+ *returns the string
+ */
 string CreditAccount::GetMaxBalance() 
 {
     /*
@@ -248,10 +305,18 @@ string CreditAccount::GetMaxBalance()
     }
     return max_balance.str();
 }
+/*
+ * Accessor
+ *gets the value of interest_accumulated_month_ and returns it
+ */
 string CreditAccount::GetInterestAccumulatedMonth() 
 {
     return interest_accumulated_month_;
 }
+/*
+ * Accessor
+ *gets the value of interest_accumulated_year_ and returns it
+ */
 string CreditAccount::GetInterestAccumulatedYear() 
 {
     return interest_accumulated_year_;

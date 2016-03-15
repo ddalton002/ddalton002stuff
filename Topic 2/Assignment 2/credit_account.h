@@ -28,6 +28,10 @@ using std::fixed;
 class CreditAccount : public BankAccount
 {
     public:
+    /*
+     * Constructor
+     *uses default values if none given
+     */
      CreditAccount(string account_name = "account", long dollars = 0, 
                     int cents = 0, double interest_rate = 0.0,
                     long max_balance_dollars = 0, 
@@ -35,23 +39,86 @@ class CreditAccount : public BankAccount
                     string last_transaction = "none",
                     string interest_accumulated_month = "$0.0", 
                     string interest_accumulated_year = "$0.0");
+     /*
+      * Destructor 
+      *unused
+      */
      virtual ~CreditAccount();
+     /*
+      * Mutator
+      *
+      */
      void SetInterestRate(double = 0.0);
+     /*
+      * Mutator
+      *
+      */
      void SetMaxBalanceDollars(long max_balance_dollars);
+     /*
+      * Mutator
+      *
+      */
      void SetMaxBalanceCents(int max_balance_cents);
+     /*
+      * Mutator
+      *
+      */
      void SetInterestAccumulatedMonth(long accumulated_dollars = 0, 
                                         int accumulated_cents = 0);
+     /*
+      * Mutator
+      *
+      */
      void SetInterestAccumulatedYear(long accumulated_dollars = 0, 
                                         int accumulated_cents = 0);
+     /*
+      * Mutator
+      *
+      */
      void MakePayment(long payment_dollars = 0, int payment_cents = 0);
+     /*
+      * Mutator
+      *
+      */
      void ChargeCard(long transaction_number = 0, long charge_dollars = 0, 
                         int charge_cents = 0);
+     /*
+      * Mutator
+      *
+      */
      void CalculateInterest();
+     /*
+      * Accessor
+      *
+      */
      double GetInterestRate();
+     /*
+      * Accessor
+      *
+      */
      long GetMaxBalanceDollars();
+     /*
+      * Accessor
+      *
+      */
      int GetMaxBalanceCents();
+     /*
+      * Accessor
+      *calls the GetMaxBalanceDollars() and GetMaxBalanceCents() functions to get
+      *the values of their variables.  It then stores the values of those variables
+      *and sends them to a stringstream along with default characters.  It then
+      *returns the string
+      */
      string GetMaxBalance();
+     /*
+      * Accessor
+      *
+      */
      string GetInterestAccumulatedMonth();
+     /*
+      * Accessor
+      *
+      */
      string GetInterestAccumulatedYear();
     
     

@@ -27,18 +27,56 @@ using std::fixed;
 class SavingAccount : public BankAccount
 {
     public:
+    /*
+     * Constructor
+     *uses default values if none given
+     */
      SavingAccount(string account_name = "account", long dollars = 0, 
-                    int cents = 0, double interest_rate = 0.0, string last_transaction = "none",
+                    int cents = 0, double interest_rate = 0.0, 
+                    string last_transaction = "none",
                     string interest_accumulated_month = "$0.0", 
                     string interest_accumulated_year = "$0.0");
+     /*
+      * Destructor 
+      *unused
+      */
      virtual ~SavingAccount();
+     /*
+      * Mutator
+      *
+      */
      void SetInterestRate(double interest_rate = 0.0);
-     void SetInterestAccumulatedMonth(long accumulated_dollars = 0, int accumulated_cents = 0);
+     /*
+      * Mutator
+      *
+      */
+     void SetInterestAccumulatedMonth(long accumulated_dollars = 0, 
+                                      int accumulated_cents = 0);
+     /*
+      * Mutator
+      *
+      */
      void SetInterestAccumulatedYear(long accumulated_dollars = 0, 
                                         int accumulated_cents = 0);
+     /*
+      * Mutator
+      *
+      */
      void CalculateInterest();
+     /*
+      * Accessor
+      *gets the value of interest_rate_ and returns it
+      */
      double GetInterestRate();
+     /*
+      * Accessor
+      *gets the value of interest_accumulated_month_ and returns it
+      */
      string GetInterestAccumulatedMonth();
+     /*
+      * Accessor
+      *gets the value of interest_accumulated_year_ and returns it
+      */
      string GetInterestAccumulatedYear();
     
     private:

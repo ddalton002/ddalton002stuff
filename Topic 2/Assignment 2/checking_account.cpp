@@ -2,11 +2,14 @@
  * Name        : checking_account.cpp
  * Author      : David Dalton
  * Description : CheckingAccount function definition
- * Source      : Luke Sathrum, lines x to y
+ * Source      : Luke Sathrum, modified portions of money lab and item lab
  */
  
 #include "checking_account.h"
 
+/*
+ * Constructor, uses default values if none given on creation
+ */
 CheckingAccount::CheckingAccount(string account_name ,long dollars, int cents, 
                                 string last_transaction, string amount_cashed,
                                 string amount_kept, string amount_deposited) 
@@ -20,16 +23,28 @@ CheckingAccount::CheckingAccount(string account_name ,long dollars, int cents,
     amount_kept_ =  amount_kept;
     amount_deposited_ = amount_deposited;
 }
+/*
+ * Destructor, unused
+ */
 CheckingAccount::~CheckingAccount() 
 {
     
 }
+/*
+ * Mutator
+ *sets all values in the recent_transactions array to "none"
+ *sets the value of last_transaction to 0, 0 and "none"
+ */
 void CheckingAccount::SetAmountKept(long kept_dollars, int kept_cents) 
 {
     stringstream kept;
     kept << '$' << setw(1) << setfill('0') << kept_dollars << "." 
       << setfill('0') << setw(2) << kept_cents;
 }
+/*
+ * Mutator
+ *
+ */
 void CheckingAccount::WriteCheck(int check_number, long check_dollars, 
                                     int check_cents) 
 {
@@ -65,10 +80,10 @@ void CheckingAccount::WriteCheck(int check_number, long check_dollars,
         BankAccount::SetRecentTransactions(0,0,"CHECK ERROR: INSUFFICIENT FUNDS");
     }
 }
-string CheckingAccount::GetAmountedKept() 
-{
-    return amount_kept_;
-}
+/*
+ * Mutator
+ *
+ */
 void CheckingAccount::CashCheck(long check_dollars, int check_cents, 
                         long check_dollars_deposited,
                         int check_cents_deposited) 
@@ -107,4 +122,12 @@ void CheckingAccount::CashCheck(long check_dollars, int check_cents,
         BankAccount::SetLastTransaction(0, 0, "CHECK CASHING ERROR");
         BankAccount::SetRecentTransactions(0, 0, "CHECK CASHING ERROR");
     }
+}
+/*
+ * Accessor
+ *gets the value of amount_kept_ and returns it
+ */
+string CheckingAccount::GetAmountedKept() 
+{
+    return amount_kept_;
 }
