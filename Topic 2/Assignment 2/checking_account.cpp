@@ -11,17 +11,14 @@
  * Constructor, uses default values if none given on creation
  */
 CheckingAccount::CheckingAccount(string account_name ,long dollars, int cents, 
-                                string last_transaction, string amount_cashed,
-                                string amount_kept, string amount_deposited) 
+                                string last_transaction, string amount_kept) 
 {
     BankAccount::SetAccountName(account_name);
     BankAccount::SetDollars(dollars);
     BankAccount::SetCents(cents) ;
     BankAccount::SetLastTransaction(0, 0, last_transaction);
-    BankAccount::ClearRecentTransactions();
-    amount_cashed_ = amount_cashed;
     amount_kept_ =  amount_kept;
-    amount_deposited_ = amount_deposited;
+    BankAccount::ClearRecentTransactions();
 }
 /*
  * Destructor, unused
@@ -43,7 +40,11 @@ void CheckingAccount::SetAmountKept(long kept_dollars, int kept_cents)
 }
 /*
  * Mutator
- *
+ *calls the GetDollars() and GetCents() function and stores the results in 
+ *separate variables.  Then it adds the values of those two variables together
+ *and adds the values the two input variables together and multiples each
+ *resulting sum by 100.  Subtracts second value from the original value
+ *unless the second value is larger.
  */
 void CheckingAccount::WriteCheck(int check_number, long check_dollars, 
                                     int check_cents) 
@@ -69,25 +70,38 @@ void CheckingAccount::WriteCheck(int check_number, long check_dollars,
           final_dollars = -final_dollars;
           final_cents = -final_cents;
         }
+        // Sets the value of dollars_ and cents_ to the resulting values
         BankAccount::SetDollars(final_dollars);
         BankAccount::SetCents(final_cents);
         check << "Check #" << check_number;
+        // Writes the transaction to the last_transaction_ and
+        // recent_transaction_[0]
         BankAccount::SetLastTransaction(final_dollars, final_cents, check.str());
         BankAccount::SetRecentTransactions(final_dollars, final_cents, check.str());
     } else
     {
+        /*
+         *If the second value is greater then the original balance value, 
+         *writes and error message to the transaction recrod value and negates
+         *the transaction.
+         */
         BankAccount::SetLastTransaction(0,0,"CHECK ERROR: INSUFFICIENT FUNDS");
         BankAccount::SetRecentTransactions(0,0,"CHECK ERROR: INSUFFICIENT FUNDS");
     }
 }
 /*
  * Mutator
- *
+ *adds a specified amount of the check_dollars and check_cents variable
+ *to the dollars_ and cents_ values.
  */
 void CheckingAccount::CashCheck(long check_dollars, int check_cents, 
                         long check_dollars_deposited,
                         int check_cents_deposited) 
 {
+    /*
+     *checksthat the amount specified to be kept is less then or equal to 
+     *the total amount of the original check value.
+     */
     if ((check_dollars_deposited <= check_dollars) || 
     (check_dollars_deposited == 0 && check_cents_deposited <= check_cents))
     {
@@ -109,16 +123,21 @@ void CheckingAccount::CashCheck(long check_dollars, int check_cents,
          final_dollars = -final_dollars;
          final_cents = -final_cents;
         }
+        // Subtracts the amount specified to be kept from the original values
         long kept_dollars = check_dollars - check_dollars_deposited;
         int kept_cents = check_cents - check_cents_deposited;
+        // Stores the kept amount into the amount_kept_ variable
         SetAmountKept(kept_dollars, kept_cents);
         money_kept << "Cashed Check, " << GetAmountedKept() << " kept.";
+        // Sets dollars_ and cents_ to the results of the final amounts
         BankAccount::SetDollars(final_dollars);
         BankAccount::SetCents(final_cents);
+        // Adds the results to the transactional record variable
         BankAccount::SetLastTransaction(final_dollars, final_cents, money_kept.str());
         BankAccount::SetRecentTransactions(final_dollars, final_cents, money_kept.str());
     } else
     {
+        //Sets the transaction record variables to a error message
         BankAccount::SetLastTransaction(0, 0, "CHECK CASHING ERROR");
         BankAccount::SetRecentTransactions(0, 0, "CHECK CASHING ERROR");
     }

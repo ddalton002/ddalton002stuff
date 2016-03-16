@@ -33,9 +33,7 @@ class CheckingAccount : public BankAccount
      */
      CheckingAccount(string account_name = "account", long dollars = 0, 
                      int cents = 0, string last_transaction = "none", 
-                     string amount_cashed = "$0.0",
-                     string amount_kept = "$0.0", 
-                     string amount_deposited = "$0.0");
+                     string amount_kept = "$0.0");
      /*
       * Destructor 
       *unused

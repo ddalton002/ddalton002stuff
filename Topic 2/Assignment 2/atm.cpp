@@ -113,7 +113,7 @@ int main()
             
             while(!done)
             {
-                cout << "1 - Show account balance\n2 - Deposit\n3 - Withdraw\n4 - Clear Transaction history\n5 - Show recent transactions\n6 - Exit ATM\n" << endl;
+                cout << "1 - Show account balance\n2 - Deposit Money/Check\n3 - Withdraw/Write a check\n4 - Show recent transactions\n5 - Clear Transaction history\n6 - Exit ATM\n" << endl;
                 int choice = reader.readInt(1,6);
                 switch(choice)
                 {
@@ -162,8 +162,15 @@ int main()
                     {
                         for(int i = 0;i<10;i++)
                         {
-                            cout << myChecking.GetLastTransaction() << endl;
+                            if(myChecking.GetRecentTransactions(i) == "")
+                            {
+                                cout << "none" << endl;
+                            }else
+                            {
+                            cout << myChecking.GetRecentTransactions(i) << endl;
+                            }
                         }
+                        
                     break;
                     }
                     
@@ -197,7 +204,7 @@ int main()
             cout << "Please select from the following options." << endl;
             while(!done)
             {
-                cout << "1 - Show account balance\n2 - Deposit\n3 - Withdraw\n4 - Clear Transaction history\n5 - Show recent transactions\n6 - Calculate Interest\n7 - Show interest accumulated\n8 - Exit ATM\n" << endl;
+                cout << "1 - Show account balance\n2 - Deposit\n3 - Withdraw\n4 - Show recent transactions\n5 - Clear Transaction history\n6 - Calculate Interest\n7 - Show interest accumulated\n8 - Exit ATM\n" << endl;
                 int choice = reader.readInt(1,8);
                 switch(choice)
                 {
@@ -229,8 +236,15 @@ int main()
                     {
                         for(int i = 0;i<10;i++)
                         {
-                            cout << mySavings.GetLastTransaction() << endl;
+                            if(mySavings.GetRecentTransactions(i) == "")
+                            {
+                                cout << "none" << endl;
+                            }else
+                            {
+                            cout << mySavings.GetRecentTransactions(i) << endl;
+                            }
                         }
+                        
                     break;
                     }
                     
@@ -285,7 +299,7 @@ int main()
             cout << "Please select from the following options." << endl;
             while(!done)
             {
-                cout << "1 - Show account balance\n2 - Deposit\n3 - Withdraw\n4 - Clear Transaction history\n5 - Calculate Interest\n7 - Show interest accumulated\n8 - Exit ATM\n" << endl;
+                cout << "1 - Show account balance\n2 - Deposit\n3 - Withdraw\n4 - Calculate Interest\n5 - Clear Transaction history\n6 - Calculate interest\n7 - Show interest accumulated\n8 - Exit ATM\n" << endl;
                 int choice = reader.readInt(1,8);
                 switch(choice)
                 {
@@ -319,8 +333,15 @@ int main()
                     {
                         for(int i = 0;i<10;i++)
                         {
-                            cout << myCredit.GetLastTransaction() << endl;
+                            if(myCredit.GetRecentTransactions(i) == "")
+                            {
+                                cout << "none" << endl;
+                            }else
+                            {
+                            cout << myCredit.GetRecentTransactions(i) << endl;
+                            }
                         }
+                        
                     break;
                     }
                     

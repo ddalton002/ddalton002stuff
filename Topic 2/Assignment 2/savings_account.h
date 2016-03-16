@@ -43,24 +43,29 @@ class SavingAccount : public BankAccount
      virtual ~SavingAccount();
      /*
       * Mutator
-      *
+      *sets the value of interest_rate_ to the input double
       */
      void SetInterestRate(double interest_rate = 0.0);
      /*
       * Mutator
-      *
+      *uses stringstream to set the value of interest_accumulated_month_ to the
+      *input values, separated by a decimal
       */
      void SetInterestAccumulatedMonth(long accumulated_dollars = 0, 
                                       int accumulated_cents = 0);
      /*
       * Mutator
-      *
+      *uses stringstream to set the value of interest_accumulated_year_ to the
+      *input values, separated by a decimal
       */
      void SetInterestAccumulatedYear(long accumulated_dollars = 0, 
                                         int accumulated_cents = 0);
      /*
       * Mutator
-      *
+      *gets the interest rate and current value of dollars_ and cents_ and then
+      *calculates the amount of interest based off of the interest rate.  Then
+      *adds the amount accruded by interest and adds it to the values of
+      *dollars_W and cents_
       */
      void CalculateInterest();
      /*

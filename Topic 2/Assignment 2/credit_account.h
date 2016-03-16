@@ -46,17 +46,17 @@ class CreditAccount : public BankAccount
      virtual ~CreditAccount();
      /*
       * Mutator
-      *
+      *sets the value of interset_rate_ to the given double
       */
      void SetInterestRate(double = 0.0);
      /*
       * Mutator
-      *
+      *sets the value of max_balance_dollars_ to the given long
       */
      void SetMaxBalanceDollars(long max_balance_dollars);
      /*
       * Mutator
-      *
+      *sets the value of max_balance_cents_ to the given int
       */
      void SetMaxBalanceCents(int max_balance_cents);
      /*
@@ -89,17 +89,17 @@ class CreditAccount : public BankAccount
      void CalculateInterest();
      /*
       * Accessor
-      *
+      *gets the value of interest_rate_ and returns it
       */
      double GetInterestRate();
      /*
       * Accessor
-      *
+      *gets the value of max_balance_dollars_ and returns it
       */
      long GetMaxBalanceDollars();
      /*
       * Accessor
-      *
+      *gets the value of max_balance_cents_ and returns it
       */
      int GetMaxBalanceCents();
      /*
@@ -112,12 +112,12 @@ class CreditAccount : public BankAccount
      string GetMaxBalance();
      /*
       * Accessor
-      *
+      *gets the value of interest_accumulated_month_ and returns it
       */
      string GetInterestAccumulatedMonth();
      /*
       * Accessor
-      *
+      *gets the value of interest_accumulated_year_ and returns it
       */
      string GetInterestAccumulatedYear();
     

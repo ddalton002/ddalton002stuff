@@ -31,7 +31,8 @@ SavingAccount::~SavingAccount()
 }
 /*
  * Mutator
- *
+ *Sets the interest_rate_ to the specified double.  If the specified value
+ *is less than 0 then it sets it to 0
  */
 void SavingAccount::SetInterestRate(double interest_rate) 
 {
