@@ -13,4 +13,4 @@ lab_12_unit_test: lab_12_unit_test.cpp
 
 #cleans up old .o files	
 clean:
-	rm *.o lab12test 
+	rm *.o *test 
