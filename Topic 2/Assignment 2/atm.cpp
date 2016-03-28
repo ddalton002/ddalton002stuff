@@ -14,6 +14,7 @@
 int atm()
 {
     CinReader reader;
+    BankAccount myBanking;
     bool end_program = false;
     bool done = false;
     long dollars;
@@ -32,7 +33,6 @@ int atm()
             //Bank account options
             case 1:
             {
-                BankAccount myBanking;
                 cout << "Set the dollar amount of your account balance\n" << endl;
                 balance_dollars = reader.readInt(0);
                 cout << "Set the cent amount of your account balance\n" << endl;
