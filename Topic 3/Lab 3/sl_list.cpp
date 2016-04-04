@@ -14,6 +14,7 @@
   SLList::SLList() 
   {
     head_ = NULL;
+    tail_ = NULL;
     size_ = 0;
   }
   /*
@@ -35,6 +36,10 @@
     new_node->set_next_node(head_);
     head_ = new_node;
     size_ = size_ + 1;
+    if(tail == NULL)
+    {
+      tail_ = head_;
+    }
   }
   /*
   void RemoveHead()
@@ -45,11 +50,16 @@
   {
     if(head_ != NULL)
     {
-      SLNode* temp_node = head_;
-      head_ = head_->next_node();
-      delete temp_node;
-      temp_node = NULL;
-      size_ = size_ - 1;
+      if(head_ != tail_)
+      {
+        SLNode* temp_node = head_;
+        head_ = head_->next_node();
+        delete temp_node;
+        temp_node = NULL;
+        size_ = size_ - 1;
+      } else {
+        tail_ = NULL;
+      }
     }
   }
   /*
