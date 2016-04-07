@@ -1,0 +1,41 @@
+For this project your will implement two classes, a data model and an array controller. You
+will also implement a driver and interface that allows your code to be tested interactively. The
+functionality of your classes will also evaluated against the unit test provided.
+All of your functions must be robust. For example, functions that access arrays should not allow
+invalid index values..
+•  implement the following classes and driver:
+o  Prize
+  private data members: prizeName (string), prizeValue (unsigned int)
+  public default constructor: initial values itemName ("NO NAME"),
+itemValue (0)
+  public overloaded constructor: parameters for all data members
+  public destructor: empty
+  friend overloaded operator==: returns true if the prizeName and
+prizeValue of the two Prizes being compared are equivalent, else return
+false
+  public accessors/gets and mutators/sets for all data members
+o  Box
+  private data members: boxNumber (unsigned int), boxColor (string),
+scratch (Prize), prizes (Prize*, for dynamic array), prizeCapacity
+(unsigned int), prizeCount (unsigned int)
+  public default constructor: initial values boxNumber (0), boxColor ("NO
+COLOR"), prizeCapacity (5), prizeCount(0); in the definition, prizes
+array must be initialized to match prizeCapacity
+  public overloaded constructor: parameters for boxNumber, boxColor,
+prizeCapacity; in the definition, prizes array must be initialized to
+match prizeCapacity
+  public destructor: free memory associated with prizes
+  public accessors/gets AND mutators/sets for boxNumber, boxColor
+  public accessor/get ONLY for data members prizeCapacity, prizeCount
+  public addPrize: parameters prize (Prize), return value (bool); place
+prize in prizes array if there is space and return true, else return false
+  public getPrize: parameters index (unsigned int), return value Prize&;
+return a Prize if index is valid, else return scratch (data member
+declared in class header)
+  public removePrize: parameters index (unsigned int), return value
+Prize; remove and return Prize if index is valid, else return scratch
+(data member declared in class header)
+o  driver
+  instances of Prize and Box
+  menu containing options to exercise all public functions in Prize and Box
+classes

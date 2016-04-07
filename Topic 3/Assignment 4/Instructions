@@ -1,0 +1,63 @@
+OBJECTIVES:
+At the end of this assignment students will
+•  Create the classes to implement a double linked list
+•  Implement a driver for using the double linked list.
+PROBLEM STATEMENT
+For this project your will implement a double linked circular linked list to simulate a game of
+musical chairs. You will build the doubly-linked class as well as the simulation.
+Your driver will be tested against a series of input files. The input file will include a list of
+students playing the game. Then a list of numbers for how long the song plays each round. Use
+this number to go through the list to determine which player is eliminated from this round of
+the game starting at the player currently at the front of the list. The player after the eliminated
+player becomes the front of the list. Eliminated players are removed from the list.
+Output the following:
+A list of the players in the sorted order of input.
+For each round until there is a winner
+-  The ordinal number of the player eliminated and their name
+-  A space separate list of the players still playing with the current front player first.
+The name of who won.
+PSEUDOCODE
+Submit and get pseudocode approved for the driver software (what runs your game) before
+coding it. You do NOT need to submit pseudocode for the linked list code.
+SUBMIT
+•  A driver that uses argv to get an input file name
+•  A DLNode Class for a double linked list
+o  data members: contents (int), pointer to previous node, pointer to next node
+o  DLNode () : initialize contents to zero, next and previous to NULL
+o  DLNode (int newContents) : initialize contents to newContents, next and previous to
+NULL
+o  virtual ~DLNode () : nothing to be done
+o  void setContents (int newContents)
+o  void setNext (DLNode* newNext)
+o  void setPrevious (DLNode* newPrevious)
+o  int getContents () const
+o  DLNode* getNext () const
+o  DLNode* getPrevious () const
+•  A DLList class to contain all of the functionality of a doubly-linked list: push front, push
+back, pop front, pop back, insert (sorted), remove, retrieve, overloaded operator <<,
+constructor, destructor, clear, size
+o  data members: count of nodes, pointer to head node, pointer to tail node
+o  DLList () : initialize count to zero, head and tail to NULL
+o  ~DLList () : call clear function
+o  unsigned int getSize () const : return count
+o  void pushFront (int newContents) : create new DLNode with newContents and attach at
+head
+o  void pushBack (int newContents) : create new DLNode with newContents and attach at
+tail
+o  void insert (int newContents) : create new DLNode with newContents and insert in
+ascending (based on newContents) order
+o  int getFront () const: return the value of the contents of the head node; throw an
+exception (throw "LIST EMPTY") if the list is empty
+o  int getBack () const : return the value of the contents of the tail node; throw an
+exception (throw "LIST EMPTY") if the list is empty
+o  bool get (int target) const : return true if target is in list, else return false
+o  void popFront () : remove current head node; do nothing if list is empty
+o  void popBack () : remove current tail node; do nothing if list is empty
+o  bool removeFirst (int target) : remove the first instance of a DLNode containing target;
+do nothing if target is not found
+o  bool removeAll (int target) : remove all instances of DLNode containing target; do
+nothing if target is not found
+o  void clear () : clear all nodes from list, reset count to zero, set head and tail to NULL
+o  friend ostream& operator<< (ostream& out, const DLList& src) : display the contents of
+each node in the list, formatted per the program specification
+("NUM1,NUM2,NUM3,...,NUMX"), to the output stream out 
