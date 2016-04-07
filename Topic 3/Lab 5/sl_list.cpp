@@ -48,29 +48,58 @@
    */
   void SLList::Insert(int insert) 
   {
-
+    /**
+     * Checks to see if head_ is null or if the contents of head_ are greater
+     * then the parameter being inserted. If it is then calls the 
+     * InsertHead() function, otherwise continues to next check
+     */
     if(head_ == NULL || head_->contents() > insert)
     {
       InsertHead(insert);
+      /**
+       * Checks if the contents of tail_ are less then the parameter being
+       * inserted.  If so, calls InsertTail() function, otherwise continues
+       * to next check
+       */
     } else if (tail_->contents() < insert)
     {
       InsertTail(insert);
+      /**
+       * Inserts the parameter into the correct location in the list
+       */
     } else 
     {
       SLNode* iterator;
       iterator = head_;
+      /**
+       * Checks whether the contents of the next node is less then the parameter
+       * and that the next node is not the tail.  If they are not, then it 
+       * advances the iterator to the next node in the list
+       */
       while(insert > iterator->next_node()->contents() && iterator->next_node() != tail_)
       {
         iterator = iterator->next_node();
       }
+      /**
+       * Checks if the iterator is located at the tail
+       */
       if(iterator != tail_)
       {
+        /**
+         * If the iterator is not located at the tail, it creates a new node
+         * and inserts it at the iterators current location, then increases
+         * the size variable by 1
+         */
         SLNode* new_node = new SLNode(insert);
         new_node->set_next_node(iterator->next_node());
         iterator->set_next_node(new_node);
         size_ = size_ + 1;
       } else
       {
+        /**
+         * If the iterator is located at the tail, then calls the InsertTail()
+         * function
+         */
         InsertTail(insert);
       }
     }
@@ -83,43 +112,69 @@
    */
   bool SLList::RemoveFirstOccurence(int parameter) 
   { 
-    bool param_found = false;
+    /**
+     * Checks if the head is null and returns false if it is
+     */
     if(head_ == NULL)
     {
-      return param_found;
+      return false;
+    /**
+     * Checks if the contents of head_ are equal to the parameter, then
+     * calls the RemoveHead() function and returns true if it is
+     */
     } else if(head_->contents() == parameter)
     {
       RemoveHead();
-      param_found = true;
-      return param_found;
+      return true;
+    /**
+     * Checks if the contents of tail_ are equal to the parameter, then
+     * calls the RemoveTail() function and returns true if it is
+     */
     } else if(tail_->contents() == parameter)
     {
       RemoveTail();
-      param_found = true;
-      return param_found;
+      return true;
+    /**
+     * checks if the list contains only two nodes, if it does not then
+     * it checks for the specified parameter, otherwise it returns false
+     */
     } else if(head_->next_node() != tail_)
     {
       SLNode* iterator = head_->next_node();
       SLNode* temp_node = head_;
+      /**
+       * Loops through the node list checking the contents of the current
+       * node to the parameter and if the next node is the tail, if neither
+       * statement is true then it iterates to the next node
+       */
       while(iterator->contents() != parameter && iterator->next_node() != tail_)
       {
         temp_node = iterator;
         iterator = iterator->next_node();
       }
+      /**
+       * Checks if the contents of the current node are equal to the parameter,
+       * if not then returns false
+       */
       if(iterator->contents() == parameter)
       {
+        /**
+         * Sets the placeholder node to the node that the iterator is pointing
+         * to then deletes the iterator node, reduces the size variable
+         * then returns true
+         */
         temp_node->set_next_node(iterator->next_node());
         delete iterator;
+        iterator = NULL;
         size_ = size_ - 1;
-        param_found = true;
-        return param_found;
+        return true;
       } else
       {
-        return param_found;
+        return false;
       }
     } else
     {
-      return param_found;
+      return false;
     }
   }
   /*
@@ -170,10 +225,18 @@
     */
   string SLList::ToString() 
   {
+    /**
+     * Checks if the node list is empty and returns an empty string if it is
+     */
     if(head_ != NULL)
     {
       stringstream stream;
       SLNode* temp_node = head_;
+      /**
+       * Using a while loop, checks every node if it is null, if it is not
+       * then it adds its contents to a stringstream and then checks if the
+       * next node is null, if not adds a separator string
+       */
       while(temp_node != NULL)
       {
         stream << temp_node->contents();
@@ -183,6 +246,7 @@
         }
         temp_node = temp_node->next_node();
       }
+      // Returns the stringstream
       return stream.str();
     } else {
       return "";
@@ -198,6 +262,11 @@
   */
   void SLList::InsertHead(int insert) 
   {
+    /**
+     * Creates a new node with the specified contents, then inserts it at the
+     * start of the list.  Increases the size variable and points tail to 
+     * head if it was currently null
+     */
     SLNode* new_node = new SLNode(insert);
     new_node->set_next_node(head_);
     head_ = new_node;
@@ -213,14 +282,29 @@
 	 */
   void SLList::InsertTail(int insert) 
   {
+    /**
+     * Checks if the list is empty, if so calls the InsertHead() function
+     */
     if(head_ != NULL)
     {
+      /**
+       * Creates a new node of the specified value and a iterator node, then
+       * sets the iterator node to head_
+       */
       SLNode* temp_node, *newNode = new SLNode(insert);
       temp_node = head_;
+      /**
+       * Loops through the list to check if the next node is null, if not it
+       * iterates to the next node
+       */
       while(temp_node->next_node() != NULL)
       {
         temp_node = temp_node->next_node();
       }
+      /**
+       * Inserts the node at the end of the list, points the tail to it and
+       * increases the size variable by 1
+       */
       temp_node->set_next_node(newNode);
       tail_ = newNode;
       size_ = size_ + 1;
@@ -237,14 +321,25 @@
   */
   void SLList::RemoveHead() 
   {
+    /**
+     * Checks if the list is empty
+     */
     if(head_ != NULL)
     {
+      /**
+       * Checks if head_ is equal to tail_ and sets tail_ to null if it is
+       */
       if(head_ == tail_)
       {
         tail_ = NULL;
       }
+      /**
+       * Creates a temporary node and points it to head, then points head to 
+       * the next node
+       */
       SLNode* temp_node = head_;
       head_ = head_->next_node();
+      // Delets the temporary node and sets it to null, then decreases size by 1
       delete temp_node;
       temp_node = NULL;
       size_ = size_ - 1;
@@ -256,15 +351,34 @@
 	 */
 	void SLList::RemoveTail()
 	{
+	  /**
+	   * Checks if list is empty
+	   */
 	  if(head_ != NULL)
     {
+      /**
+       * Checks if head_ is equal to tail_ and calls the RemoveHead() function
+       * if it is
+       */
       if(head_ != tail_)
       {
+      /**
+       * Creates a temporary node and points it to head
+       */
         SLNode* temp_node = head_;
+        /**
+         * Loops through the list and checks if the next node is the tail,
+         * if it is not then it iterates to the next node
+         */
         while(temp_node->next_node() != tail_)
         {
           temp_node = temp_node->next_node();
         }
+        /**
+         * Sets the last node in the list to null and deletes the tail,
+         * then sets tail equal to the temp node and decreases the size 
+         * variable
+         */
         temp_node->set_next_node(NULL);
         delete tail_;
         tail_ = temp_node;
