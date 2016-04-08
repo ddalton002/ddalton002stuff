@@ -4,7 +4,18 @@
  * Sources:
  */
 
-class Prize 
+#ifndef PRIZE_H
+#define PRIZE_H
+
+#include <iostream>
+#include <string>
+#include <sstream>
+using std::cout;
+using std::endl;
+using std::string;
+using std::stringstream;
+
+class Prize
 {
     public:
     /**
@@ -25,27 +36,30 @@ class Prize
     /**
      * Mutator for prizeName_
      */
-     void set_prize_name();
+     void setPrizeName(string name);
     /**
      * Mutator for prizeValue_
      */
-     void set_prize_value();
+     void setPrizeValue(unsigned int value);
     /**
      * Accessor for prizeName_
      */
-     string  get_prize_name();
+     string getPrizeName();
     /**
      * Accessor for prizeValue_
      */
-     unsigned int get_prize_value();
+     unsigned int getPrizeValue();
     /**
      * Overloaded operator
      * returns true if the prizeName and prizeValue of the two Prizes being 
      * compared are equivalent, else return false
      */
-     bool friend overloaded==();
+     friend bool operator ==(Prize first_prize, Prize second_prize);
+     //friend bool operator ==(const Prize &prize1, const Prize &prize2);
      
     private:
-     prizeName_;
-     prizeValue_;
+     string prizeName_;
+     unsigned int prizeValue_;
 };
+
+#endif

@@ -7,8 +7,8 @@
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
-#include "Prize.h"
-#include "Box.h"
+//#include "prize.h"
+#include "box.h"
 
 
 TEST_CASE("Make default Box"){

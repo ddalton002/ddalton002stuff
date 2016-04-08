@@ -4,7 +4,19 @@
  * Sources:
  */
 
-class Box 
+#ifndef BOX_H
+#define BOX_H
+
+#include <iostream>
+#include <string>
+#include <sstream>
+#include "prize.h"
+using std::cout;
+using std::endl;
+using std::string;
+using std::stringstream;
+
+class Box
 {
     public:
      /**
@@ -19,7 +31,8 @@ class Box
      * parameters for boxNumber, boxColor, prizeCapacity; in the definition, 
      * prizes array must be initialized to match prizeCapacity
      */
-     Box(unsigned int number,string color,unsigned int capacity);
+     Box(unsigned int number,string color,
+         unsigned int capacity, unsigned int count = 0);
     /**
      * Deconstructor
      * free memory associated with prizes
@@ -28,50 +41,52 @@ class Box
     /**
      * Mutator for boxNumber_
      */
-     void set_box_number();
+     void setBoxNumber(unsigned int number);
     /**
      * Mutator for boxColor_
      */
-     void set_box_color();
+     void setBoxColor(string color);
     /**
      * Accessor for boxNumber_
      */
-     unsigned int get_box_number();
+     unsigned int getBoxNumber();
     /**
      * Accessor for boxColor_
      */
-     string get_box_color();
+     string getBoxColor();
     /**
      * Accessor for prizeCapacity_
      */
-     unsigned int prize_capacity();
+     unsigned int getPrizeCapacity();
     /**
      * Accessor for prizeCount_
      */
-     unsigned in prize_count(prize);
+     unsigned int getPrizeCount();
     /**
      * parameters prize (Prize), return value (bool); place prize in prizes 
      * array if there is space and return true, else return false
      */
-     bool addPrize(unsigned int index);
+     bool addPrize(Prize prize);
     /**
      * parameters index (unsigned int), return value Prize&; return a Prize if 
      * index is valid, else return scratch (data member declared in class 
      * header)
      */
-      Prize* getPrize();
+      Prize getPrize(unsigned int index);
     /**
      * parameters index (unsigned int), return value Prize; remove and return 
      * Prize if index is valid, else return scratch (data member declared in 
      * class header)
      */
-      removePrize(unsigned int index);
+      Prize removePrize(unsigned int index);
      
     private:
-     unsigned in boxNumber_;
+     unsigned int boxNumber_;
      string boxColor_;
      Prize scratch_;
      Prize* prizes_;
      unsigned int prizeCapacity_;
      unsigned int prizeCount_;
 };
+
+#endif
