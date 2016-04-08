@@ -57,7 +57,7 @@ int main()
             cout << "Lets get some prizes!\n" << endl;
             cout << "What do you want to do?\n" << endl;
             
-            cout << "1 - See what's in the box\n2- Inspect the box\n3 - Change the box\n4 - Quit\n";
+            cout << "1 - See what's in the box\n2 - Inspect the box\n3 - Change the box\n4 - Quit\n";
             action = 0;
             action = reader.readInt(0,4);
             
@@ -134,15 +134,18 @@ int main()
                 break;
                 
                 case 4:
-                    done = false;
+                    done = true;
                 break;
             }
         }while(!done);
         
         cout << "Do you want to make a new box?  Enter Y or N" << endl;
         char make_new_box;
-        make_new_box = reader.readChar("Yy");
-        if(make_new_box != 'Y' || make_new_box != 'y')
+        make_new_box = reader.readChar("YyNn");
+        if(make_new_box == 'Y'  || make_new_box == 'y')
+        {
+            end_program = false;
+        } else
         {
             end_program = true;
         }

@@ -1,14 +1,14 @@
 #creates the executable from all of the object files
-#lab2play: driver.o box.o prize.o
-#	g++ -Wall -g -o lab2play prize.o box.o driver.o
+lab2play: driver.o box.o prize.o
+	g++ -Wall -g -o lab2play prize.o box.o driver.o
 
 #creates the driver functions
-#cinreader: CinReader.cpp CinReader.h
-#	g++ -Wall -g -c CinReader.cpp
+cinreader: CinReader.cpp CinReader.h
+	g++ -Wall -g -c CinReader.cpp
 
 #creates the driver functions
-#driver: driver.cpp
-#	g++ -Wall -g -c driver.cpp 
+driver: driver.cpp
+	g++ -Wall -g -c driver.cpp 
 
 #creates the executable from all of the object files
 lab2test: assign_3_unit_test.o prize.o box.o

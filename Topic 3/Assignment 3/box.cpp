@@ -5,7 +5,6 @@
  */
 
 #include "box.h"
-#include "prize.cpp"
 
     /**
      * Default constructor
