@@ -28,4 +28,4 @@ assign_3_unit_test: assign_3_unit_test.cpp
 
 #cleans up old .o files	
 clean:
-	rm *.o *test  #*play
+	rm *.o *test  *play

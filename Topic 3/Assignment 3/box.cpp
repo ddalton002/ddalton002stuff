@@ -132,7 +132,7 @@
      */
     Prize Box::removePrize(unsigned int index) 
     {
-        if(prizes_[index] == scratch_)
+        if(index == prizeCapacity_)
         {
             return scratch_;
         } else

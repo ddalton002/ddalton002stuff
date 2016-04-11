@@ -58,7 +58,7 @@ int main()
      * Loops through the file and sorts the lines into either a string array
      * or an integer array based on the contents of the lines
      */
-    do {/*
+    do {
             fin >> current_line;
             if(current_line[0] > 9)
             {
@@ -68,7 +68,7 @@ int main()
             {
                 games[iterator_games] = current_line;
                 iterator_games = iterator_games + 1;
-            }*/
+            }
         } while(!fin.eof());
     /**
      * Creates the list of players using a node list where the contents
