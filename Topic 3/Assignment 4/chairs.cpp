@@ -60,7 +60,7 @@ int main()
      */
     do {
             fin >> current_line;
-            if(current_line[0] > 9)
+            if(isdigit(current_line))
             {
                 players[iterator_players] = current_line;
                 iterator_players = iterator_players + 1;

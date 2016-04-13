@@ -1,26 +1,35 @@
 /*
  * Name        : lab_recursion.cpp
- * Author      : YOUR NAME
+ * Author      : David Dalton
  * Description : Recursive Functions
  */
 
 #include "lab_recursion.h"
 
+#include <stdio.h> 
+#include <stdlib.h>
+#include <math.h>
+
 // CODE FUNCTION DEFINITIONS HERE
 
+
 /*
- * UPDATE!!!! to match the requirements
- * Convert a decimal number to binary
- * @param number to be converted.
- * @return a stringstream.
+ * Convert a binary number to decimal
+ * @param number to be converted
+ * @return an unsigned int
  */
-void decToBin(int num)
+unsigned int binToDec(int num) 
 {
-	if (num > 1) //note this makes the base case num = 0
+	
+	string convert_int = num;
+	int byte_size = convert_int.length();
+
+	unsigned int i = 0;
+	unsigned int total = 0;
+	if(i < byte_size)
 	{
-		decToBin(num/2); //recursive call
+		total = pow(2, i);
+		return total + binTodec(num);
 	}
-
-	cout<<(num%2); //outputs in correct order
+	return total;
 }
-

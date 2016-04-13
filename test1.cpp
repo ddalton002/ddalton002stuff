@@ -27,3 +27,20 @@ int main()
     cout << b << endl;
     return 0;
 }
+
+
+/*int bintodec(string binary, unsigned int i = 0)
+{
+    int tot = 0;
+    if (i < binary.length())
+    {
+        if (binary[i] == '1')
+            tot = pow(2, i);
+        else if (!binary[i] == '0')
+            throw "String is not formatted in binary";
+        return tot + bintodec(binary, ++i);
+    }
+    return tot;
+}
+http://stackoverflow.com/questions/26701548/recursion-binary-to-decimal-completely-stuck#
+    */
