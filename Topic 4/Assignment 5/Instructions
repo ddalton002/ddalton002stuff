@@ -1,0 +1,50 @@
+PROBLEM STATEMENT
+Update the BSTree code that you have to read in data from an input file and 
+create and traverse the Binary Search Tree. Your driver will accept a file 
+specified by the user (argv), and produces output based on the following 
+operations in a text file:
+• Any line of the file that starts with a # is a comment – ignore
+• Create tree: C
+• Clear tree: X
+• Delete tree: D
+• Insert word: I word
+• Find word: F word
+• Remove word: R word
+• Get word: G word
+• Show number of nodes in the tree: N
+• In-order print: O
+• Reverse in-order print: E
+
+PSEUDOCODE
+Submit and get pseudocode approved for the driver software (what runs your game) 
+before coding it. You do NOT need to submit pseudocode for the linked list code.
+
+SUBMIT
+• A driver
+o Takes input file specified by the user (argv)
+o Pointer to the binary search tree to be used to create instances, work with 
+instances, and destroy instances
+o Helper functions as needed to input file, process the input file, execute the 
+commands received from the input file, and produces output.
+• Word class containing the following members and functions (used by the driver)
+o word – string contain the word assigned to the Word instance
+o count – an unsigned int (defaults to 1) containing the count of the number of 
+instances the “word” was encountered in the input
+o default constructor
+o overloaded constructor, with string parameter (representing the “word”)
+o destructor
+o gets and sets
+• Binary search tree node with the following: NOTE: This is a template class
+o data - a template data type
+o left child – a pointer to another search tree node
+o right child – a pointer to another search tree node
+o overloaded constructor – NULLs out both pointers, assigns value to data
+o destructor
+o gets and sets as appropriate
+• Binary search tree with the following
+o root – points to a binary search tree node (do NOT implement public get or 
+set functions for this member)
+o size – unsigned int
+o default constructor – set root pointer to NULL and node count to zero
+o destructor – use to clear to free all memory
+o gets and sets as appropriate
