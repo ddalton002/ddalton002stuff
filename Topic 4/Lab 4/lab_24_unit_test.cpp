@@ -4,7 +4,7 @@
  * Description : Unit test to test Lab #24 Functionality
  */
 #define CATCH_CONFIG_MAIN
-#include "../../helpful_files/catch.hpp"
+#include "catch.hpp"
 
 // For NULL
 #include <cstddef>
