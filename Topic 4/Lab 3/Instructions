@@ -1,0 +1,54 @@
+Declare and implement a class that provides the following interface EXACTLY.
+You will create 2 new files, bst_node.h and bst_node.cpp
+
+Class Name: BSTNode
+
+Private Members:
+
+  BSTNode* left_child_
+  --points to a left child
+  BSTNode* right_child_
+  --points to a right child
+  int contents_
+  --used to store the data contents of a BSTNode
+
+Public Members:
+
+  Default Constructor
+  --sets left_child_ to NULL
+    sets right_child_ to NULL
+    sets contents_ to 0
+
+  Overloaded Constructor
+  --has one int parameter for contents
+    sets left_child_ to NULL
+    sets right_child_ to NULL
+    sets contents_ to the value of the parameter
+  
+  Destructor
+  --sets left_child_ to NULL
+  --sets right_child_ to NULL
+  
+  void set_contents(int)
+  --mutator for contents_
+  
+  int contents() const
+  int& contents()
+  --accessors for contents_
+  
+  void set_left_child(BSTNode*)
+  --mutator for left_child_
+  void set_right_child(BSTNode*)
+  --mutator for right_child_
+  
+  BSTNode* left_child() const
+  BSTNode*& left_child()
+  --accessors for left_child_
+  
+  BSTNode* right_child() const
+  BSTNode*& right_child()
+  --accessors for right_child_
+  
+  Why two functions for each get?
+  https://isocpp.org/wiki/faq/const-correctness#const-overloading
+  http://markgodwin.blogspot.com/2009/08/c-reference-to-pointer.html
