@@ -33,8 +33,7 @@ bool BSTree::Insert(int value)
 }
 
 /**
- * WIP
- * returns value returned by private function Remove(int, root)
+ * calls private function Remove(int, root)
  */
 bool BSTree::Remove(int num)
 {
@@ -42,9 +41,7 @@ bool BSTree::Remove(int num)
 }
 
 /**
- * WIP
- * if the tree is empty return 0
- * otherwise return the value returned by private function FindMin(root)
+ * calls private function FindMin(root)
  */
 int BSTree::FindMin()
 {
@@ -187,71 +184,89 @@ string BSTree::InOrder(BSTNode* node)
 }
 
 /**
- * WIP
  * traverses the tree and removes the node containing the target
  * integer if present and returns true
  * return false if target integer is not in tree (or the tree is empty)
  */
-bool BSTree::Remove(int num, BSTNode*& root)
+bool BSTree::Remove(int value, BSTNode*& node)
 {
-    BSTNode* temp = root;
-    if (root == NULL)
+    /**
+     * Creates an iterator to traverse the tree
+     */
+    BSTNode* iterator = node;
+    /**
+     * Checks if the current node is null and returns false if it is
+     */
+    if (node == NULL)
     return false;
     else
     {
         /**
-         * checks if num is < node contents and calls remove 
-         * on left child if it is
+         * Checks if the contents of the node are greater than the value being
+         * removed, calls the itself with the current node and value
+         * being looked for if it is
          */
-        if (num < root->contents())
-        Remove(num, root->left_child());
+        if (value < node->contents())
+        Remove(value, node->left_child());
         
         /**
-         * checks if num is > node contents and calls remove 
-         * on right child if it is
+         * Checks if the contents of the node are less than the value being
+         * removed, calls the itself with the current node and value
+         * being looked for if it is
          */
-        else if (num > root->contents())
-        Remove(num, root->right_child());
+        else if (value > node->contents())
+        Remove(value, node->right_child());
         
         /**
-         * performs removal if node contents == num
+         * Checks if the contents of the node are equal to the value being
+         * looked for
          */
-        else if (root ->contents() == num)
+        else if (node ->contents() == value)
         {
-            //case no children
-            if (!root->left_child() && !root->right_child())
+            /**
+             * If the node has no left or right children then it sets the node
+             * equal to null, deletes the iterator and reduces size_
+             */
+            if (!node->left_child() && !node->right_child())
             {
-                root = NULL;
-                delete temp;
-                size_ -=1;
-            
-            // case only right child    
-            } else if (!root->left_child())
+                node = NULL;
+                delete iterator;
+                size_ = size_ - 1;
+            /**
+             * Checks if the node doesn't have a left child.  If it doesn't
+             * then it replaces the node with the nodes right child, deletes
+             * the iterator and reduces size_
+             */
+            } else if (!node->left_child())
             {
-                root = root->right_child();
-                delete temp;
-                size_ -= 1;
-            
-            //case only left child    
-            } else if (!root->right_child())
+                node = node->right_child();
+                delete iterator;
+                size_ = size_ - 1;
+            /**
+             * Checks if the node doesn't have a right child.  If it doesn't
+             * then it replaces the node with the nodes left child, deletes
+             * the iterator and reduces size_
+             */
+            } else if (!node->right_child())
             {
-                root = root->left_child();
-                delete temp;
-                size_ -= 1;
+                node = node->left_child();
+                delete iterator;
+                size_ = size_ - 1;
                 
-            //case two children    
+            /**
+             * Checks if the node has left and right children
+             */
             } else 
             {
                 /**
-                 * sets node contents to the min value in
-                 * its right subtree
+                 * Sets the node equal to the lowest value in the right side
+                 * of the tree, then calls the remove function on the
+                 * right side of the tree with the contents of the node
+                 * and the nodes right child to remove the original lowest
+                 * value node
                  */
-                root->set_contents(FindMin(root->right_child()));
-                /**
-                 * performs remove on the right subtree 
-                 * to remove the duplicate
-                 */
-                Remove(root->contents(), root->right_child());
+                node->set_contents(FindMin(node->right_child()));
+                Remove(node->contents(), node->right_child());
             }
             return true;
         }
@@ -259,18 +274,25 @@ bool BSTree::Remove(int num, BSTNode*& root)
 }
 
 /**
- * WIP
  * returns the value of the smallest node in the tree
  * helper function for private Remove()
  */
-int BSTree::FindMin(BSTNode* root) const
+int BSTree::FindMin(BSTNode* node) const
 {
-     //Check if tree is empty
-     if (root == NULL)
+     /**
+      * Checks if the node is empty
+      */
+     if (node == NULL)
      return 0;
-     //turn left
-     while (root->left_child() != NULL)
-     root = root->left_child();
-     //bring it home
-     return root->contents();
+     /**
+      * Loops through the left side of the tree until it finds the lowest value
+      * in the tree by location the left child where it's left child is 
+      * equal to null
+      */
+     while (node->left_child() != NULL)
+     node = node->left_child();
+     /**
+      * Returns the contents of that node
+      */
+     return node->contents();
 }
