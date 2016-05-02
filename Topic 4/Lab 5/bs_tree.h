@@ -35,6 +35,17 @@ class BSTree
      */
     bool Insert(int value);
     
+    /**
+     * returns value returned by private function Remove(int, root)
+     */
+    bool Remove(int);
+
+    /**
+     * if the tree is empty return 0
+     * otherwise return the value returned by private function FindMin(root)
+     */
+    int FindMin();
+    
     /** 
      * calls private function Clear(root)
      */
@@ -71,6 +82,19 @@ class BSTree
      * value)
      */
     string InOrder(BSTNode* node);
+    
+    /**
+     * traverses the tree and removes the node containing the target
+     * integer if present and returns true
+     * return false if target integer is not in tree (or the tree is empty)
+     */
+    bool Remove(int, BSTNode*&);
+
+    /**
+     * returns the value of the smallest node in the tree
+     * helper function for private Remove()
+     */
+    int FindMin(BSTNode*) const;
     
     /**
      * points to the root node of a binary search tree

@@ -32,6 +32,25 @@ bool BSTree::Insert(int value)
     return Insert(value,root_);
 }
 
+/**
+ * WIP
+ * returns value returned by private function Remove(int, root)
+ */
+bool BSTree::Remove(int num)
+{
+    return Remove(num, root_);
+}
+
+/**
+ * WIP
+ * if the tree is empty return 0
+ * otherwise return the value returned by private function FindMin(root)
+ */
+int BSTree::FindMin()
+{
+    return FindMin(root_);
+}
+
 /** 
  * calls private function Clear(root)
  */
@@ -165,4 +184,93 @@ string BSTree::InOrder(BSTNode* node)
         output << InOrder(node->right_child());
     return output.str();
     }
+}
+
+/**
+ * WIP
+ * traverses the tree and removes the node containing the target
+ * integer if present and returns true
+ * return false if target integer is not in tree (or the tree is empty)
+ */
+bool BSTree::Remove(int num, BSTNode*& root)
+{
+    BSTNode* temp = root;
+    if (root == NULL)
+    return false;
+    else
+    {
+        /**
+         * checks if num is < node contents and calls remove 
+         * on left child if it is
+         */
+        if (num < root->contents())
+        Remove(num, root->left_child());
+        
+        /**
+         * checks if num is > node contents and calls remove 
+         * on right child if it is
+         */
+        else if (num > root->contents())
+        Remove(num, root->right_child());
+        
+        /**
+         * performs removal if node contents == num
+         */
+        else if (root ->contents() == num)
+        {
+            //case no children
+            if (!root->left_child() && !root->right_child())
+            {
+                root = NULL;
+                delete temp;
+                size_ -=1;
+            
+            // case only right child    
+            } else if (!root->left_child())
+            {
+                root = root->right_child();
+                delete temp;
+                size_ -= 1;
+            
+            //case only left child    
+            } else if (!root->right_child())
+            {
+                root = root->left_child();
+                delete temp;
+                size_ -= 1;
+                
+            //case two children    
+            } else 
+            {
+                /**
+                 * sets node contents to the min value in
+                 * its right subtree
+                 */
+                root->set_contents(FindMin(root->right_child()));
+                /**
+                 * performs remove on the right subtree 
+                 * to remove the duplicate
+                 */
+                Remove(root->contents(), root->right_child());
+            }
+            return true;
+        }
+    }
+}
+
+/**
+ * WIP
+ * returns the value of the smallest node in the tree
+ * helper function for private Remove()
+ */
+int BSTree::FindMin(BSTNode* root) const
+{
+     //Check if tree is empty
+     if (root == NULL)
+     return 0;
+     //turn left
+     while (root->left_child() != NULL)
+     root = root->left_child();
+     //bring it home
+     return root->contents();
 }
