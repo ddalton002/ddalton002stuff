@@ -7,7 +7,7 @@
 #include <iostream>
 #include <string>
 #include <sstream>
-#include "bs_treet.h"
+#include "bs_tree.h"
 using std::cout;
 using std::endl;
 using std::string;
