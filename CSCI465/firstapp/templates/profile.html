@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+{% block content %}
+<div class="grid-x grid-padding-x">
+  <!-- <div class="large-4 medium-4 small-12 cell"></div> -->
+  <div class="large-6 medium-6 small-12 large-offset-3 medium-offset-3 cell">
+    <h2 class="text-center">Profile</h2>
+    <form method="post">
+      {% csrf_token %}
+      {{ user_form.as_p }}
+      {{ profile_form.as_p }}
+      <input type="submit" class="button expanded" value="Change" />
+  </form>
+  </div>
+</div>
+{% endblock %}

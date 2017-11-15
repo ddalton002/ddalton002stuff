@@ -1,0 +1,167 @@
+<!doctype html>
+{% load static %}
+<html class="no-js" lang="en" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static "css/foundation.css" %}">
+    <link rel="stylesheet" href="{% static "css/app.css" %}">
+    <!--
+     Unused color changing scheme
+    <style>
+    body.dark-mode {
+      background-color: #111;
+      color: #eee;
+    }
+    body.dark-mode a {
+      color: #111;
+    }
+    body.dark-mode button {
+      background-color: #eee;
+      color: #111;
+    }
+
+    body.light-mode {
+      background-color: #eee;
+      color: #111;
+    }
+    body.light-mode a {
+      color: #111;
+    }
+    body.light-mode button {
+      background-color: #111;
+      color: #eee;
+    }
+    </style> -->
+<!-- Page layout and nav bar taken from https://foundation.zurb.com/building-blocks/ -->
+    <div class="app-dashboard shrink-medium">
+      <div class="row expanded app-dashboard-top-nav-bar">
+        <!--Unused search bar and link button <div class="columns medium-2">
+          <button data-toggle="app-dashboard-sidebar" class="menu-icon hide-for-medium"></button>
+          <a class="app-dashboard-logo">Foundation</a>
+        </div> -->
+        <!-- <div class="columns show-for-medium">
+          <div class="app-dashboard-search-bar-container">
+            <input class="app-dashboard-search" type="search" placeholder="Search">
+            <i class="app-dashboard-search-icon fa fa-search"></i>
+          </div>
+        </div> -->
+
+        <!-- Unused color changing button <button type="button" class="warning button" onclick="toggleDarkLight()">Toggle Color Scheme</button>  -->
+        <header class="sticky-shrinknav-header">
+          <ul class="menu align-center sticky-shrinknav-menu">
+            <li>
+              <div class="columns shrink app-dashboard-top-bar-actions">
+                <!-- <button href="/" class="button hollow">Home</button> -->
+                <a href="/" height="30" width="30" alt="">Home<i class="fa fa-info-circle"></i></a>
+              </div>
+            </li>
+            <li>
+              <div class="columns shrink app-dashboard-top-bar-actions">
+                <!-- <button href="#" class="button hollow">About</button> -->
+                <a href="#" height="30" width="30" alt="">About<i class="fa fa-info-circle"></i></a>
+              </div>
+            </li>
+            <li>
+              <div class="columns shrink app-dashboard-top-bar-actions">
+                <!-- <button href="#" class="button hollow">Posts</button> -->
+                <a href="#" height="30" width="30" alt="">Posts<i class="fa fa-info-circle"></i></a>
+              </div>
+            </li>
+            <li>
+              <div class="columns shrink app-dashboard-top-bar-actions">
+                <!-- <button href="#" class="button hollow">Messages</button> -->
+                <a href="#" height="30" width="30" alt="">Messages<i class="fa fa-info-circle"></i></a>
+              </div>
+            </li>
+            <li>
+              <div class="columns shrink app-dashboard-top-bar-actions">
+                <!-- <button href="/profile/" class="button hollow">Account</button> -->
+                <a href="/profile/" height="30" width="30" alt="">Account<i class="fa fa-info-circle"></i></a>
+              </div>
+            </li>
+            <li>
+            {% if user.is_authenticated %}
+            <div class="columns shrink app-dashboard-top-bar-actions">
+              <!-- <button href="/logout/" class="button hollow">Logout {{ user.username }}</button> -->
+              <a href="/login/" height="30" width="30" alt="">Logout {{ user.username }}<i class="fa fa-info-circle"></i></a>
+            </div>
+            {% else %}
+            <div class="columns shrink app-dashboard-top-bar-actions">
+              <!-- <button href="#" class="button hollow">Login</button> -->
+              <a href="#" height="30" width="30" alt="">Login<i class="fa fa-info-circle"></i></a>
+            </div>
+            {% endif %}
+            </li>
+          </ul>
+        </header>
+
+      </div>
+
+      <div class="app-dashboard-body off-canvas-wrapper">
+        <div id="app-dashboard-sidebar" class="app-dashboard-sidebar position-left off-canvas off-canvas-absolute reveal-for-medium" data-off-canvas>
+          <div class="app-dashboard-sidebar-title-area">
+            <div class="app-dashboard-close-sidebar">
+              <h3 class="app-dashboard-sidebar-block-title">Where to, traveller?</h3>
+              <!-- Close button -->
+              <button id="close-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-sidebar-close-button show-for-medium" aria-label="Close menu" type="button">
+                <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-left"></i></a></span>
+              </button>
+            </div>
+            <div class="app-dashboard-open-sidebar">
+              <button id="open-sidebar" data-app-dashboard-toggle-shrink class="app-dashboard-open-sidebar-button show-for-medium" aria-label="open menu" type="button">
+                <span aria-hidden="true"><a href="#"><i class="large fa fa-angle-double-right"></i></a></span>
+              </button>
+            </div>
+          </div>
+          <div class="app-dashboard-sidebar-inner">
+            <ul class="menu vertical">
+              <li><a href="#" class="is-active">
+                <i class="large fa fa-institution"></i><span class="app-dashboard-sidebar-text">LFG</span>
+              </a></li>
+              <li><a>
+                <i class="large fa fa-hourglass"></i><span class="app-dashboard-sidebar-text">LFM</span>
+              </a></li>
+              <li><a>
+                <i class="large fa fa-industry"></i><span class="app-dashboard-sidebar-text">WTB</span>
+              </a></li>
+              <li><a href="#" class="is-active">
+                <i class="large fa fa-institution"></i><span class="app-dashboard-sidebar-text">WTS</span>
+              </a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="app-dashboard-body-content off-canvas-content" data-off-canvas-content>
+
+          <body translate="no" id="body" class=light-mode>
+            {% block content %}{% endblock %}
+            <script src="{% static "js/vendor/jquery.js" %}"></script>
+            <script src="{% static "js/vendor/what-input.js" %}"></script>
+            <script src="{% static "js/vendor/foundation.js" %}"></script>
+            <script src="{% static "js/app.js" %}"></script>
+            <script src="{% static "js/app-dashboard-layout.js" %}"></script>
+            <script src="{% static "js/sticky-shrinknav.js" %}"></script>
+
+            {% block scripts %}
+            <script>
+            function toggleDarkLight() {
+              var body = document.getElementById("body");
+              var currentClass = body.className;
+              body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+            }
+              //# sourceURL=harlemsquirrel.github.io/css/javascript/2017/01/31/dark-light-mode-switcher.html
+
+            </script>
+            {% endblock %}
+          </body>
+
+        </div>
+      </div>
+    </div>
+
+
+</html>
