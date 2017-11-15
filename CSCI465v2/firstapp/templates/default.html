@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Title{% endblock %}
+{% block content %}
+
+
+
+<div class="grid-x grid-padding-x">
+ <div class="large-8 medium-8 small-12 large-offset-2 medium-offset-2 cell">
+    <h2 class="subheader text-center">Posts</h2>
+      <!-- <form action="/" method="post">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" class="success button expanded" value="Submit" />
+      </form> -->
+        <div id="app">
+          <ul>
+            <li v-for="suggestion in suggestions">
+              {% verbatim %}
+              {{ suggestion.suggest }}
+              {% endverbatim %}
+            </li>
+          </ul>
+        </div>
+        <div id="app">
+      <ul>
+        {% for suggestion in suggestions %}
+          <li>
+            <img src="/media/{{ suggestion.image }}" alt="{{ suggestion.idescription }}" width="100"/>
+            {{ suggestion.suggestion }}
+            <!-- <ul>
+              {% for comment in suggestion.comments %}
+              <li> {{ comment.comment }}</li>
+              {% endfor %}
+              {% if user.is_authenticated %}
+              <li><a href="/comment/{{ suggestion.id }}/">Add Comment</a></li>
+              {% endif %}
+            </ul> -->
+          </li>
+        {% endfor %}
+        </li>
+      </ul>
+      </div>
+    </div>
+</div>
+
+
+{% endblock %}
+{% block scripts %}
+<script src="{% static "js/vendor/vue.js" %}"></script>
+<script src="{% static "js/vueapp.js" %}"></script>
+<script>
+function toggleDarkLight() {
+  var body = document.getElementById("body");
+  var currentClass = body.className;
+  body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+}
+  //# sourceURL=harlemsquirrel.github.io/css/javascript/2017/01/31/dark-light-mode-switcher.html
+
+</script>
+
+
+{% endblock %}
