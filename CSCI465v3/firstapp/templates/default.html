@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Title{% endblock %}
+{% block content %}
+
+
+<div class="grid-x grid-padding-x">
+ <div class="large-8 medium-8 small-12 large-offset-2 medium-offset-2 cell">
+    <h2 class="subheader text-center">Posts</h2>
+    <ul style="list-style-type:none">
+      {% for suggestion in suggestions %}
+      <li>
+        <div class="card" style="width: 600px;">
+
+        <div class="card-divider">
+        {{ suggestion.suggestion }}
+      </div>
+      <img src="/media/{{ suggestion.image }}"/>
+      <div class="card-section">
+        {{ suggestion.idescription }}
+      </div>
+    </div>
+    {% endfor %}
+  </ul>
+</div>
+</div>
+
+
+{% endblock %}
+{% block scripts %}
+<script src="{% static "js/vendor/vue.js" %}"></script>
+<script src="{% static "js/vueapp.js" %}"></script>
+<script>
+function toggleDarkLight() {
+  var body = document.getElementById("body");
+  var currentClass = body.className;
+  body.className = currentClass == "dark-mode" ? "light-mode" : "dark-mode";
+}
+  //# sourceURL=harlemsquirrel.github.io/css/javascript/2017/01/31/dark-light-mode-switcher.html
+
+</script>
+
+
+{% endblock %}
