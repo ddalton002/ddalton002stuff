@@ -6142,3 +6142,43 @@ body.sticky-shrinknav-wrapper .sticky-shrinknav-header .sticky-shrinknav-header-
           transform: scale(0);
   transition: all 0.3s ease;
 }
+
+
+.pull-quote {
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  font-style: normal;
+  font-size: 1.125rem;
+  max-width: 50%;
+  line-height: 1.25em;
+  text-transform: uppercase;
+  color: #1779ba;
+  float: right;
+  margin: 10px 0 0 20px;
+  background: linear-gradient(#767676, #1779ba);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.pull-quote:before {
+  content: '';
+}
+
+.pull-quote:after {
+  content: '';
+}
+
+@media print, screen and (min-width: 40em) {
+  .pull-quote {
+    font-size: 1.875rem;
+    max-width: calc(50% - 5%);
+    margin-right: -15%;
+  }
+}
+
+@media print, screen and (min-width: 64em) {
+  .pull-quote {
+    max-width: calc(50% + 5%);
+    margin-right: -25%;
+  }
+}

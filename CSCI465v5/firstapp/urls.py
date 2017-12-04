@@ -9,6 +9,7 @@ urlpatterns = [
     url(r'suggestions/$',views.suggestions, name='suggestions'),
     url(r'^suggest/$',views.suggestion_view, name='suggest'),
     url(r'profile/$',views.profile, name='profile'),
+    url(r'about/$',views.about, name='about'),
     url(r'lfg/$',views.lfg, name='lfg'),
     url(r'lfm/$',views.lfm, name='lfm'),
     url(r'wtb/$',views.wtb, name='wtb'),

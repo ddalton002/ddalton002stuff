@@ -41,6 +41,12 @@ def page2(request):
     context = {"variable":toReturn}
     return render(request,"default.html",context)
 
+def about(request):
+
+
+    return render(request,"about.html")
+
+
 def register(request):
     if request.method == 'POST':
         form = registration_form(request.POST)
