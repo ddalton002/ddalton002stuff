@@ -32,5 +32,6 @@ urlpatterns = [
         'next_page':'/login'
     }),
     url(r'',include('firstapp.urls')),
+    url(r'^messages/', include('postman.urls', namespace='postman', app_name='postman')),
 
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

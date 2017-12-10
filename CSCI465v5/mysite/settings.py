@@ -40,9 +40,13 @@ INSTALLED_APPS = [
     'firstapp',
     'django.db.models.signals',
     'django.dispatch',
+    'pagination',
+    'postman',
 
 
 ]
+
+# POSTMAN_AUTO_MODERATE_AS = True # default is None
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -67,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'postman.context_processors.inbox',
             ],
         },
     },
