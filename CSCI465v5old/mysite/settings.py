@@ -25,7 +25,7 @@ SECRET_KEY = 'vpe@0roqtyiqpx!psyq3m*3@zdf*l((v!y+oewq4)br4(5!(i$'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['35.197.89.240']
+ALLOWED_HOSTS = ['35.227.181.42', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'firstapp',
     'django.db.models.signals',
     'django.dispatch',
+    'gunicorn',
 
 
 ]
@@ -123,5 +124,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR + "/static/"
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR + "/media/"
